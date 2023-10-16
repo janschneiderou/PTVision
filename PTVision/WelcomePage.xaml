@@ -1,0 +1,287 @@
+﻿<UserControl x:Class="PTVision.WelcomePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PTVision"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000">
+    <Grid Name="myGrid">
+        <Rectangle Fill="#8ecae6"  />
+        <Image Source="Images\Title.png" VerticalAlignment="Top" HorizontalAlignment="Center" Height="90"/>
+
+        <Grid Name="Grid_for_Mode_Selection" Visibility="Visible">
+            <Grid Name="PracticeGrid" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="42,230,620,225" Width="200" >
+                <Image Source="Images\container4.png"  Stretch="Fill"  />
+                <Button Name="PracticeButton" HorizontalAlignment="Left" MouseEnter="PracticeButton_MouseEnter" MouseLeave="PracticeButton_MouseLeave" BorderThickness="0"  Margin="10,5,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Click="Button_add_PracticeMode_Click" Height="70" Width="70">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image x:Name="imgPracticeButton" Source="Images/btn_speaking.png" />
+                </Button>
+                <Label Content="Practice Presentation" FontSize="13" HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Bottom"  Foreground="Black" FontWeight="Bold"/>
+                <CheckBox Content="Script" Foreground="White" HorizontalAlignment="Left" Margin="95,55,0,0" VerticalAlignment="Top" Name="checkBoxScript" />
+                
+
+            </Grid>
+            <Grid Name="AddScriptGrid" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="42,100,620,225" Width="200" >
+                <Image Source="Images\container4.png"  Stretch="Fill"  />
+                <Button Name="Button_add_Script" BorderThickness="0" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="13" Background="Transparent"  Height="70" Width="70" MouseEnter="Button_add_Script_MouseEnter" MouseLeave="Button_add_Script_MouseLeave" Click="Button_add_Script_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image x:Name="imgButtonScript" Source="Images/btn_script.png" />
+                </Button>
+                <Label Content="Work with Script" FontSize="13" HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Bottom"  Foreground="Black" FontWeight="Bold"/>
+
+            </Grid>
+            <Grid Name="MemoriseScriptGrid" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="274,100,0,0" Width="200" >
+                <Image Source="Images\container4.png"  Stretch="Fill"  />
+                <Button Name="Button_add_Memory"  BorderThickness="0" MouseEnter="Button_add_Memory_MouseEnter" MouseLeave="Button_add_Memory_MouseLeave" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent"  Height="70" Width="70" Click="Button_add_Memory_Click" >
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image x:Name="imgMemoryButton" Source="Images/btn_memory.png" />
+                </Button>
+                <Label Content="Memorise your Script" FontSize="13" HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Bottom"  Foreground="Black" FontWeight="Bold"/>
+
+            </Grid>
+
+            <Grid Name="PimpScriptGrid" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="504,100,0,0" Width="200" >
+                <Image Source="Images\container4.png"  Stretch="Fill"  />
+                <Button Name="Button_add_Pimp"  BorderThickness="0" MouseEnter="Button_add_Pimp_MouseEnter" MouseLeave="Button_add_Pimp_MouseLeave" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent"  Height="70" Width="70" Click="Button_add_Pimp_Click" >
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image x:Name="imgButtonPimp" Source="Images/btn_Pimp.png" />
+                </Button>
+                <Label Content="Pimp your Script" FontSize="13" HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Bottom"  Foreground="Black" FontWeight="Bold"/>
+
+            </Grid>
+
+
+
+            <Grid Name="ReviewPracticeGrid" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="274,232,0,0" Width="200" >
+                <Image Source="Images\container4.png"  Stretch="Fill"  />
+                <Button Name="Button_Review_Practice"  BorderThickness="0" MouseEnter="Button_Review_Practice_MouseEnter" MouseLeave="Button_Review_Practice_MouseLeave" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent"  Height="70" Width="70" Click="Button_Review_Practice_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image x:Name="imgButtonReview" Source="Images/btn_review.png" />
+                </Button>
+                <Label Content="Review your practice" FontSize="13" HorizontalAlignment="Left" Margin="10,00,0,5" VerticalAlignment="Bottom"  Foreground="Black" FontWeight="Bold"/>
+
+            </Grid>
+            <Grid Name="PresentationTipsGrid" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="42,360,220, 225" Width="200" >
+                <Image Source="Images\container4.png"  Stretch="Fill"  />
+                <Button Name="Button_Presentation_Tips"  BorderThickness="0" HorizontalAlignment="Center" MouseEnter="Button_Presentation_Tips_MouseEnter" MouseLeave="Button_Presentation_Tips_MouseLeave" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent"  Height="77" Width="180" Click="Button_Presentation_Tips_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image Name="imgButtonTips" Source="Images/btn_Tips_presentation.png" />
+                </Button>
+                <Label Content="Get presentation tips"  FontWeight="Bold" FontSize="13" HorizontalAlignment="Left" Margin="10,00,0,5" VerticalAlignment="Bottom"  Foreground="Black"/>
+
+            </Grid>
+
+        </Grid>
+
+
+        <Rectangle VerticalAlignment="Bottom" Height="70" Fill="#219ebc" ></Rectangle>
+        <Label Content="Select Camera" HorizontalAlignment="Left" Margin="22,0,0,10" VerticalAlignment="Bottom" FontWeight="Bold" Foreground="White"/>
+        <ComboBox Name="cameraSelector" Background="Transparent" BorderBrush="Transparent"  Foreground="Black"  HorizontalAlignment="Left" Margin="144,0,0,10" VerticalAlignment="Bottom" Width="120" SelectionChanged="cameraSelector_SelectionChanged" Opacity="0.5"/>
+        <Button  HorizontalAlignment="Left" MouseEnter="Button_MouseEnter_Volume" MouseLeave="Button_MouseLeave_Volume" Margin="300,0,0,10" VerticalAlignment="Bottom" Click="Volume_Button_Click" BorderThickness="0" Background="Transparent" Height="30" Width="30">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Name="volumeButtonImg" Source="Images/btn_volume1.png" />
+        </Button>
+        <Button Name="UserManagementButton" IsEnabled="False" MouseEnter="UserManagementButton_MouseEnter" MouseLeave="UserManagementButton_MouseLeave" Background="Transparent" HorizontalAlignment="Left" Margin="350,0,0,10" VerticalAlignment="Bottom" Click="UserManagementButton_Click" BorderThickness="0"  Height="30" Width="30">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Name="UserManagementButtonImg" Source="Images/btn_user.png" />
+        </Button>
+        <Button Name="SlideSelectionButton" IsEnabled="False" MouseEnter="SlideSelectionButton_MouseEnter" MouseLeave="SlideSelectionButton_MouseLeave" Background="Transparent" HorizontalAlignment="Left" Margin="400,0,0,10" VerticalAlignment="Bottom" Click="SlideSelectionButton_Click" BorderThickness="0"  Height="30" Width="30">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Name="SlideSelectionButtonImg" Source="Images/btn_slides.png" />
+        </Button>
+        <Label Foreground="White" Content="Select Speech Language:"  HorizontalAlignment="Left" Margin="500,0,0,10" VerticalAlignment="Bottom" FontWeight="Bold"/>
+        <ComboBox Name="languageSelector" Background="Transparent" BorderBrush="Transparent"  Foreground="Black"  HorizontalAlignment="Left" Margin="670,0,0,10" VerticalAlignment="Bottom" Width="120" SelectionChanged="languageSelector_SelectionChanged" Opacity="0.5">
+            <ComboBox.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Select your desired installed speech language"/>
+                </ToolTip>
+            </ComboBox.ToolTip>
+        </ComboBox>
+        <Button  HorizontalAlignment="Right" Margin="0,0,20,10" MouseEnter="Button_MouseEnter_Exit" MouseLeave="Button_MouseLeave_Exit"  VerticalAlignment="Bottom" Height="45" BorderThickness="0" Click="Exit_Button_Click" Background="Transparent">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Name="buttonExitImg" Source="Images/btn_exit1.png" />
+        </Button>
+        <local:Tutor x:Name="Tutor" HorizontalAlignment="Left" Margin="506,395,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>

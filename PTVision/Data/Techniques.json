@@ -1,0 +1,145 @@
+{
+  "techniques": [
+    {
+      "Improvements": [
+        "Suspence",
+        "Understanding",
+        "Regain Attention"
+      ],
+      "Modality": "Silence",
+      "Name": "Long Pause",
+      "Description": "Long Pauses are extremely useful in many situations during presentations.",
+      "Feedback": " 5 seconds Pause",
+      "Example": "\\Videos\\Pauses.mp4"
+    },
+    {
+      "Improvements": [
+        "Structuring"
+      ],
+      "Modality": "Gesture",
+      "Name": "Comparison",
+      "Description": "It is a good practice to support your verbal message with the same gesture such as: showing one hand while saying On the one hand",
+      "Feedback": "One Hand Gesture",
+      "Example": "\\Videos\\Comparisons.mp4"
+    },
+    {
+      "Improvements": [
+        "Respect",
+        "Confidence"
+      ],
+      "Modality": "Voice",
+      "Name": "Ending Low tone",
+      "Description": "Ending with a low tone tends to command respect and can be used when calling the audience for some action",
+      "Feedback": "Low Tone",
+      "Example": "\\Videos\\Command.mp4"
+    },
+    {
+      "Improvements": [
+        "Respect",
+        "Confidence"
+      ],
+      "Modality": "Posture",
+      "Name": "Chin Up",
+      "Description": "Having a chin up helps to be perceived as confident",
+      "Feedback": "Chin Up",
+      "Example": "\\Videos\\ChinUp.mp4"
+    },
+    {
+      "Improvements": [
+        "Openness",
+        "Confidence"
+      ],
+      "Modality": "Posture",
+      "Name": "Showing Palms",
+      "Description": "Showing your palms will make you look more open and warm",
+      "Feedback": "Show Palms",
+      "Example": "\\Videos\\Palms.mp4"
+    },
+    {
+      "Improvements": [
+        "Structuring",
+        "Description"
+      ],
+      "Modality": "Gesture",
+      "Name": "Enumeration Gestures",
+      "Description": "You can use gestures to signal the different points you want to communicate",
+      "Feedback": "Enumerate Gestures",
+      "Example": "\\Videos\\Enumeration.mp4"
+    },
+    {
+      "Improvements": [
+        "Structuring"
+      ],
+      "Modality": "Voice",
+      "Name": "High Pitch Signal",
+      "Description": "You can change the tone of your voice to signal a new topic",
+      "Feedback": "High Pitch",
+      "Example": "\\Videos\\HiPitch.mp4"
+    },
+    {
+      "Improvements": [
+        "Description",
+        "Engagement"
+      ],
+      "Modality": "Gesture",
+      "Name": "Iconic Gesture",
+      "Description": "Iconic Gestures are engaging and can help you to describe the scenario better",
+      "Feedback": "Iconic Gesture",
+      "Example": "\\Videos\\Iconic.mp4"
+    },
+    {
+      "Improvements": [
+        "Engagement"
+      ],
+      "Modality": "Space",
+      "Name": "Quotes",
+      "Description": "Use the space and change orientation when telling some quotes as if you are creating an avatar of the person that said the quote",
+      "Feedback": "Avatar",
+      "Example": "\\Videos\\Quotes.mp4"
+    },
+    {
+      "Improvements": [
+        "Engagement",
+        "Structuring"
+      ],
+      "Modality": "Space",
+      "Name": "Space Side",
+      "Description": "Use the space of the stage to signal: Time, direction, etc.",
+      "Feedback": "Side Step",
+      "Example": "\\Videos\\SpaceSide.mp4"
+    },
+    {
+      "Improvements": [
+        "Engagement",
+        "Structuring"
+      ],
+      "Modality": "Space",
+      "Name": "Back and front",
+      "Description": "You can use the space and volume to signal theoretical and personal stuff",
+      "Feedback": "Forward",
+      "Example": "\\Videos\\SpaceVolume.mp4"
+    },
+    {
+      "Improvements": [
+        "Engagement",
+        "Attention"
+      ],
+      "Modality": "Voice",
+      "Name": "Stress words",
+      "Description": "You can use your voice to stress what is important",
+      "Feedback": "Stress word",
+      "Example": "\\Videos\\StressWords.mp4"
+    },
+    {
+      "Improvements": [
+        "Engagement",
+        "Attention"
+      ],
+      "Modality": "Gesture",
+      "Name": "Emphatic Gestures",
+      "Description": "You can use Emphatic Gestures to stress what is important",
+      "Feedback": "Stress word",
+      "Example": "\\Videos\\Emphatic.mp4"
+    }
+  ]
+}
