@@ -48,6 +48,7 @@ namespace PTVision
             string executingDirectory = Directory.GetCurrentDirectory();
             // usersPath = executingDirectory + "\\users"; 
             Globals.usersPath = System.IO.Path.Combine(executingDirectory, "Users");
+            Globals.vocal_exercise_Path = executingDirectory + "\\Data\\VocalExercises.txt";
 
             bool exists = System.IO.Directory.Exists(Globals.usersPath);
 

@@ -31,12 +31,14 @@ namespace PTVision
         double startGestures;
         double startHandsFace;
         double startNoHands;
+        double startRaisedArms;
 
         int startSpeakingCounter;
         bool startedSpeaking = false;
 
         bool possibleCrossedArms = false;
         bool possibleCrossedLegs = false;
+        bool possibleRaisedArms = false;
         bool possibleDanding = false;
         bool possibleGestures = false;
         bool possibleHandsFace = false;
@@ -383,7 +385,56 @@ namespace PTVision
 
         }
 
+        public void analyseRaiseArms(string jsonOne)
+        {
+            try
+            {
+                current_Body = JsonConvert.DeserializeObject<MediaBody>(jsonOne);
+            }
+            catch (Exception ex)
+            {
+                int y = 0;
+                doAnalysis = false;
 
+            }
+
+            currentTime = DateTime.Now.TimeOfDay.TotalMilliseconds;
+
+
+            if (current_Body != null)
+            {
+                if (current_Body.keypoints[(int)MediaBodyParts.LEFT_ELBOW].visibility > 0.7 && current_Body.keypoints[(int)MediaBodyParts.RIGHT_ELBOW].visibility > 0.7)
+                {
+                    if (current_Body.keypoints[(int)MediaBodyParts.LEFT_EYE].Y > current_Body.keypoints[(int)MediaBodyParts.LEFT_ELBOW].Y &&
+                        current_Body.keypoints[(int)MediaBodyParts.RIGHT_EYE].Y > current_Body.keypoints[(int)MediaBodyParts.RIGHT_ELBOW].Y 
+                        )
+                    {
+
+                        startRaisedArms = currentTime;
+                        possibleRaisedArms = true;
+                        Globals.f_RaisedArms = true;
+                    }
+                    else if (current_Body.keypoints[(int)MediaBodyParts.LEFT_EYE].Y > current_Body.keypoints[(int)MediaBodyParts.LEFT_ELBOW].Y &&
+                            current_Body.keypoints[(int)MediaBodyParts.RIGHT_EYE].Y > current_Body.keypoints[(int)MediaBodyParts.RIGHT_ELBOW].Y
+                            && possibleRaisedArms == true && currentTime - startRaisedArms > t_posture)
+                    {
+                        Globals.f_RaisedArms = true;
+                    }
+                    else
+                    {
+                        Globals.f_RaisedArms = false;
+                        possibleRaisedArms = false;
+                    }
+
+
+                }
+                else
+                {
+                    Globals.f_RaisedArms = false;
+                    possibleRaisedArms = false;
+                }
+            }
+        }
 
         public void calcArmAngles()
         {

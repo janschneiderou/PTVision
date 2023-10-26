@@ -14,6 +14,8 @@
     <None Remove="Images\btn_BackO.png" />
     <None Remove="Images\btn_chunk.png" />
     <None Remove="Images\btn_chunkO.png" />
+    <None Remove="Images\btn_Exercise.png" />
+    <None Remove="Images\btn_ExerciseO.png" />
     <None Remove="Images\btn_exit1.png" />
     <None Remove="Images\btn_exit1O.png" />
     <None Remove="Images\btn_find.png" />
@@ -100,6 +102,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_chunkO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Exercise.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_ExerciseO.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_exit1.png">
@@ -307,7 +315,6 @@
 
   <ItemGroup>
     <Folder Include="HelpExes\" />
-    <Folder Include="LogObjects\" />
     <Folder Include="Data\" />
   </ItemGroup>
 
@@ -329,6 +336,9 @@
 
   <ItemGroup>
     <None Update="Data\Techniques.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\VocalExercises.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="HelpExes\FFmpeg\bin\avcodec-60.dll">

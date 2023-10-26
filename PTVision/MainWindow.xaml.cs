@@ -127,6 +127,14 @@ namespace PTVision
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Globals.MediaPProcess.Kill();
+            if(welcomePage.practiceMode!=null)
+            {
+                welcomePage.practiceMode.doExitStuff();
+            }
+            if(welcomePage.vocalExercises!=null)
+            {
+                welcomePage.vocalExercises.doExitStuff();
+            }
             foreach (var process in Process.GetProcessesByName("mediaP"))
             {
                 process.Kill();

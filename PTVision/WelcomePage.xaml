@@ -180,6 +180,34 @@
 
             </Grid>
 
+            <Grid Name="VocalExercisesGrid" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="274,360,220, 225" Width="200" >
+                <Image Source="Images\container4.png"  Stretch="Fill"  />
+                <Button Name="Button_Vocal_Exercises"  BorderThickness="0" HorizontalAlignment="Center" MouseEnter="Button_Vocal_Exercises_MouseEnter" MouseLeave="Button_Vocal_Exercises_MouseLeave" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent"  Height="77" Width="180" Click="Button_Vocal_Exercises_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image Name="imgButtonVocal" Source="Images/btn_Exercise.png" />
+                </Button>
+                <Label Content="Do Vocal Exercises"  FontWeight="Bold" FontSize="13" HorizontalAlignment="Left" Margin="10,00,0,5" VerticalAlignment="Bottom"  Foreground="Black"/>
+
+            </Grid>
+
         </Grid>
 
 

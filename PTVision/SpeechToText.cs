@@ -93,6 +93,37 @@ namespace PTVision
             PopulateLanguageDropdown();
         }
 
+        public SpeechToText(ComboBox languageComboBox, bool exercise)
+        {
+            try
+            {
+
+                //  currentLanguage = CultureInfo.InstalledUICulture.Name.ToString();
+                // create the engine
+                speechRecognitionEngine = createSpeechEngine();
+
+                // hook to events
+                speechRecognitionEngine.AudioLevelUpdated += new EventHandler<AudioLevelUpdatedEventArgs>(engine_AudioLevelUpdated);
+                speechRecognitionEngine.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(engine_SpeechRecognized);
+
+                // load dictionary
+                loadGrammar(exercise);
+
+                // use the system's default microphone
+                speechRecognitionEngine.SetInputToDefaultAudioDevice();
+
+                // start listening
+                speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Voice recognition failed");
+            }
+            languageSelector = languageComboBox;
+            // Populate the language dropdown menu
+            PopulateLanguageDropdown();
+        }
+
 
 
 
@@ -198,6 +229,47 @@ namespace PTVision
             }
         }
 
+
+        private void loadGrammar(bool exercise)
+        {
+            try
+            {
+                Globals.words = new List<Word>();
+                Choices texts = new Choices();
+
+                if (File.Exists(Globals.vocal_exercise_Path) == false)
+                {
+                    File.WriteAllText(Globals.vocal_exercise_Path, "ahhh \n Ba \n Br \n La \n Rr \n Weao \n Oawe");
+                }
+
+                string[] lines = File.ReadAllLines(Globals.vocal_exercise_Path);
+                foreach (string line in lines)
+                {
+                    // skip commentblocks and empty lines..
+                    if (line.StartsWith("--") || line == String.Empty) continue;
+
+                    // split the line
+                    var parts = line.Split(new char[] { '|' });
+
+                    // add commandItem to the list for later lookup or execution
+                    Globals.words.Add(new Word() { Text = line });
+
+                    // add the text to the known choices of speechengine
+                    texts.Add(line);
+                }
+                if (lines.Length > 0)
+                {
+
+                }
+                Grammar wordsList = new Grammar(new GrammarBuilder(texts));
+                speechRecognitionEngine.LoadGrammar(wordsList);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public void UpdateSelectedLanguage(string languageTag)
         {

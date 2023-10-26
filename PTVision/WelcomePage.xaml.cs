@@ -34,6 +34,7 @@ namespace PTVision
         public ReviewPractice reviewPractice;
         public PresentationTips presentationTips;
         public PimpScript pimpScript;
+        public VocalExercises vocalExercises;
 
 
         LearningDesign learningDesign;
@@ -175,6 +176,13 @@ namespace PTVision
                 }
 
             }
+            if(vocalExercises != null)
+            {
+                if (vocalExercises.Visibility == Visibility.Visible)
+                {
+                    vocalExercises.recognizedWord(text);
+                }
+            }
             
 
 
@@ -273,6 +281,14 @@ namespace PTVision
 
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
+            if(practiceMode!=null)
+            {
+                practiceMode.doExitStuff();
+            }
+            if(vocalExercises!=null)
+            {
+                vocalExercises.doExitStuff();
+            }
             foreach (var process in Process.GetProcessesByName("ffmpeg"))
             {
                 process.Kill();
@@ -396,6 +412,28 @@ namespace PTVision
             pimpScript.exitEvent += PimpScript_exitEvent;
         }
 
+        private void Button_Vocal_Exercises_Click(object sender, RoutedEventArgs e)
+        {
+            Grid_for_Mode_Selection.Visibility = Visibility.Collapsed;
+            vocalExercises = new VocalExercises();
+            Tutor.Visibility = Visibility.Collapsed;
+            myGrid.Children.Add(vocalExercises);
+
+            speechToText = new SpeechToText(languageSelector, true);
+            speechToText.speechRecognizedEvent += SpeechRecognition_speechRecognizedEvent;
+            speechToText.volumeReceivedEvent += SpeechRecognition_volumeReceivedEvent;
+
+
+            vocalExercises.Margin = new Thickness(0, 0, 0, 0);
+            vocalExercises.VerticalAlignment = VerticalAlignment.Center;
+            vocalExercises.HorizontalAlignment = HorizontalAlignment.Center;
+            vocalExercises.Visibility = Visibility.Visible;
+            Globals.currentWord = 0;
+            vocalExercises.exitEvent += VocalExercises_exitEvent; ;
+        }
+
+       
+
         #endregion
 
         #region Exit Events
@@ -489,6 +527,17 @@ namespace PTVision
             {
                 pimpScript.Visibility = Visibility.Collapsed;
                 myGrid.Children.Remove(pimpScript);
+                Grid_for_Mode_Selection.Visibility = Visibility.Visible;
+            }));
+        }
+
+        private void VocalExercises_exitEvent(object sender, string x)
+        {
+            restartSpeech();
+            Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate
+            {
+                vocalExercises.Visibility = Visibility.Collapsed;
+                myGrid.Children.Remove(vocalExercises);
                 Grid_for_Mode_Selection.Visibility = Visibility.Visible;
             }));
         }
@@ -599,10 +648,20 @@ namespace PTVision
             imgButtonPimp.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_Pimp.png"));
         }
 
+        private void Button_Vocal_Exercises_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgButtonVocal.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_ExerciseO.png"));
+        }
+
+        private void Button_Vocal_Exercises_MouseLeave(object sender, MouseEventArgs e)
+        {
+            imgButtonVocal.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_Exercise.png"));
+        }
+
+
+
         #endregion
 
-
-
-
+       
     }
 }

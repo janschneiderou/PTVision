@@ -142,6 +142,7 @@ namespace PTVision
                 string videoPath = System.IO.Path.Combine(Directory.GetCurrentDirectory() + path); ;
                 myVideo.Source = new System.Uri(videoPath);
                 videoLoaded = true;
+                myVideo.MediaEnded += MyVideo_MediaEnded;
                 myVideo.Stop();
 
 
@@ -153,6 +154,13 @@ namespace PTVision
             }
         }
 
+        private void MyVideo_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            
+            myVideo.Stop();
+            btnPlay.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_Play.png"));
+            isPlaying = false;
+        }
 
         void loadFeedbacks()
         {

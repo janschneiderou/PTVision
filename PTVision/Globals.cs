@@ -26,6 +26,8 @@ namespace PTVision
         /// list of predefined commands
         /// </summary>
         public static List<Word> words = new List<Word>();
+
+        public static string vocal_exercise_Path;  
         #endregion
 
         #region process
@@ -103,6 +105,7 @@ namespace PTVision
         public static bool f_handsFace = true;
         public static bool f_noHands = true;
         public static bool f_gestureStarted = false;
+        public static bool f_RaisedArms = false;
         #endregion
 
         #region mistakes
