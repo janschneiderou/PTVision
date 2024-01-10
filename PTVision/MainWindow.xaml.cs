@@ -26,6 +26,7 @@ namespace PTVision
     public partial class MainWindow : Window
     {
         WelcomePage welcomePage;
+        WelcomePage2 welcomePage2;
         bool notConnectionYet = true;
         NetworkStream stream;
 
@@ -35,7 +36,9 @@ namespace PTVision
             this.WindowState = System.Windows.WindowState.Maximized;
             initHelpServers();
             welcomePage = new WelcomePage();
-            MainGrid.Children.Add(welcomePage);
+            welcomePage2 = new WelcomePage2();
+            //MainGrid.Children.Add(welcomePage);
+            MainGrid.Children.Add(welcomePage2);
             Task taskA = Task.Run(() => initSocket());
             
             
@@ -130,10 +133,12 @@ namespace PTVision
             if(welcomePage.practiceMode!=null)
             {
                 welcomePage.practiceMode.doExitStuff();
+              //  welcomePage2.practiceMode.doExitStuff();
             }
             if(welcomePage.vocalExercises!=null)
             {
                 welcomePage.vocalExercises.doExitStuff();
+              //  welcomePage2.vocalExercises.doExitStuff();
             }
             foreach (var process in Process.GetProcessesByName("mediaP"))
             {

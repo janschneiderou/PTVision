@@ -8,12 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\avatarR.png" />
     <None Remove="Images\btn_add.png" />
     <None Remove="Images\btn_addO.png" />
     <None Remove="Images\btn_Back.png" />
     <None Remove="Images\btn_BackO.png" />
     <None Remove="Images\btn_chunk.png" />
     <None Remove="Images\btn_chunkO.png" />
+    <None Remove="Images\btn_Compose.png" />
+    <None Remove="Images\btn_Compose_O.png" />
     <None Remove="Images\btn_Exercise.png" />
     <None Remove="Images\btn_ExerciseO.png" />
     <None Remove="Images\btn_exit1.png" />
@@ -22,11 +25,19 @@
     <None Remove="Images\btn_findO.png" />
     <None Remove="Images\btn_Go.png" />
     <None Remove="Images\btn_goO.png" />
+    <None Remove="Images\btn_I_Slides.png" />
+    <None Remove="Images\btn_I_Slides_O.png" />
+    <None Remove="Images\btn_MakeItShine.png" />
+    <None Remove="Images\btn_MakeItShine_O.png" />
     <None Remove="Images\btn_memory.png" />
     <None Remove="Images\btn_memoryO.png" />
+    <None Remove="Images\btn_Memory_E.png" />
+    <None Remove="Images\btn_Memory_E_O.png" />
     <None Remove="Images\btn_Next.png" />
     <None Remove="Images\btn_NextO.png" />
     <None Remove="Images\btn_no.png" />
+    <None Remove="Images\btn_Nonverbal_S.png" />
+    <None Remove="Images\btn_Nonverbal_S_O.png" />
     <None Remove="Images\btn_noO.png" />
     <None Remove="Images\btn_pause_play.png" />
     <None Remove="Images\btn_pause_playO.png" />
@@ -34,10 +45,18 @@
     <None Remove="Images\btn_PimpO.png" />
     <None Remove="Images\btn_Play.png" />
     <None Remove="Images\btn_PlayO.png" />
+    <None Remove="Images\btn_Practice.png" />
+    <None Remove="Images\btn_Practice_E.png" />
+    <None Remove="Images\btn_Practice_E_O.png" />
+    <None Remove="Images\btn_Practice_O.png" />
+    <None Remove="Images\btn_Reflect.png" />
+    <None Remove="Images\btn_Reflect_O.png" />
     <None Remove="Images\btn_return.png" />
     <None Remove="Images\btn_returnO.png" />
     <None Remove="Images\btn_review.png" />
     <None Remove="Images\btn_reviewO.png" />
+    <None Remove="Images\btn_Review_P.png" />
+    <None Remove="Images\btn_Review_P_O.png" />
     <None Remove="Images\btn_save_close.png" />
     <None Remove="Images\btn_save_closeO.png" />
     <None Remove="Images\btn_script.png" />
@@ -54,12 +73,18 @@
     <None Remove="Images\btn_startO.png" />
     <None Remove="Images\btn_Stop.png" />
     <None Remove="Images\btn_StopO.png" />
+    <None Remove="Images\btn_Tips.png" />
+    <None Remove="Images\btn_Tips_O.png" />
     <None Remove="Images\btn_tips_presentation.png" />
     <None Remove="Images\btn_tips_presentationO.png" />
     <None Remove="Images\btn_user.png" />
     <None Remove="Images\btn_userO.png" />
+    <None Remove="Images\btn_Voice_E.png" />
+    <None Remove="Images\btn_Voice_E_O.png" />
     <None Remove="Images\btn_volume1.png" />
     <None Remove="Images\btn_volume1O.png" />
+    <None Remove="Images\btn_W_W_Script.png" />
+    <None Remove="Images\btn_W_W_Script_O.png" />
     <None Remove="Images\btn_yes.png" />
     <None Remove="Images\btn_yesO.png" />
     <None Remove="Images\container3.png" />
@@ -86,6 +111,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\avatarR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\btn_add.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -102,6 +130,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_chunkO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Compose.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Compose_O.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_Exercise.png">
@@ -128,10 +162,28 @@
     <Content Include="Images\btn_goO.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\btn_I_Slides.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_I_Slides_O.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_MakeItShine.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_MakeItShine_O.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\btn_memory.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_memoryO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Memory_E.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Memory_E_O.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_Next.png">
@@ -141,6 +193,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_no.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Nonverbal_S.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Nonverbal_S_O.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_noO.png">
@@ -164,6 +222,24 @@
     <Content Include="Images\btn_PlayO.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\btn_Practice.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Practice_E.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Practice_E_O.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Practice_O.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Reflect.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Reflect_O.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\btn_return.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -174,6 +250,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_reviewO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Review_P.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Review_P_O.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_save_close.png">
@@ -224,6 +306,12 @@
     <Content Include="Images\btn_StopO.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\btn_Tips.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Tips_O.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\btn_tips_presentation.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -236,10 +324,22 @@
     <Content Include="Images\btn_userO.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\btn_Voice_E.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_Voice_E_O.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\btn_volume1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_volume1O.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_W_W_Script.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btn_W_W_Script_O.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\btn_yes.png">

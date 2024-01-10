@@ -16,6 +16,10 @@ namespace PTVision.LogObjects
 
         public bool mistake = true;
 
+        /*
+         * add annotation 
+         */
+
         public PracticeLogAction()
         {
 

@@ -401,7 +401,7 @@ namespace PTVision
             currentTime = DateTime.Now.TimeOfDay.TotalMilliseconds;
 
 
-            if (current_Body != null)
+            if (current_Body.keypoints[0] != null)
             {
                 if (current_Body.keypoints[(int)MediaBodyParts.LEFT_ELBOW].visibility > 0.7 && current_Body.keypoints[(int)MediaBodyParts.RIGHT_ELBOW].visibility > 0.7)
                 {
