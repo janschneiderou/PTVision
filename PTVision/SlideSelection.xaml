@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PTVision"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Width="600" Height="450">
-        <Image Source="Images/frame.png" Stretch="Fill" />
-        <Label Content="Folder with the slides:" HorizontalAlignment="Left" Foreground="White" Margin="52,123,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="textboxPath" HorizontalAlignment="Left" Margin="182,131,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
-        <Button Name="Button_findSlides" Click="Button_findSlides_Click" HorizontalAlignment="Left" Margin="415,127,0,0" Width="25" Height="25"  VerticalAlignment="Top" MouseEnter="Button_findSlides_MouseEnter" MouseLeave="Button_findSlides_MouseLeave" >
+             d:DesignHeight="800" d:DesignWidth="1000">
+    <Grid Name="mainGrid" Width="1000" Height="800">
+        <Image x:Name="imgFrame" Source="Images/container3.png" Stretch="Fill" />
+        <Label Content="Folder with the slides:" HorizontalAlignment="Center" Foreground="#0E7B8C" Margin="-250,323,0,200" VerticalAlignment="Top"/>
+        <TextBox Name="textboxPath" HorizontalAlignment="Center" Margin="100,327,0,200" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+        <Button Name="Button_findSlides" Click="Button_findSlides_Click" HorizontalAlignment="Center" Margin="345,323,0,200" Width="25" Height="25"  VerticalAlignment="Top" MouseEnter="Button_findSlides_MouseEnter" MouseLeave="Button_findSlides_MouseLeave" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -32,7 +32,7 @@
             </Button.Style>
             <Image Name="findButtonImg" Source="Images/btn_find.png"/>
         </Button>
-        <Button Name="Go_back" MouseEnter="Go_back_MouseEnter" MouseLeave="Go_back_MouseLeave" Click="Go_back_Click" HorizontalAlignment="Left" Margin="40,0,0,22" VerticalAlignment="Bottom" Height="40">
+        <Button Name="Go_back" MouseEnter="Go_back_MouseEnter" MouseLeave="Go_back_MouseLeave" Click="Go_back_Click" HorizontalAlignment="Left" Margin="100,0,0,100" VerticalAlignment="Bottom" Height="40">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -54,8 +54,12 @@
             </Button.Style>
             <Image Name="go_backImg" Source="Images/btn_return.png"/>
         </Button>
-        <TextBox HorizontalAlignment="Center" Margin="0,225,0,0" IsEnabled="False" TextWrapping="Wrap" Text="In Powerpoint, open the presentation that you want to practice. Go to File, Save As, then in the option of Save Type As: select PNG Portable Network Graphic Format (*.png). Press Save. 
-Select the folder where the files of the presentation were saved." VerticalAlignment="Top" Width="460" Height="125" Background="Transparent" Foreground="White"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,100,0,0" IsEnabled="False" TextWrapping="Wrap" Text="Select a folder where your slides are saved as .png files.
+The slide names should be as follows Slide1.png, Slide2.png, ..., SlideN.png                                                                 
+It is possible to use Powerpoint for this. In Powerpoint, open the presentation that you want to practice. Go to File, Save As, then in the option of Save Type As: select PNG Portable Network Graphic Format (*.png). Press Save. 
+Select the folder where the files of the presentation were saved." VerticalAlignment="Top" Width="460" Height="125" Background="Transparent" Foreground="#0E7B8C" SelectionOpacity="100" FontWeight="Bold"/>
+        <Image HorizontalAlignment="Center" Source="Images\Parrot.png" Height="200" Margin="-540,104,0,0"  VerticalAlignment="Top" Width="200"/>
+       
 
     </Grid>
 </UserControl>

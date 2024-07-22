@@ -28,6 +28,7 @@ namespace PTVision
         {
             InitializeComponent();
             string path = System.IO.Path.Combine(Globals.presentationPath + "\\Slides.txt");
+            setupSize();
             if (!File.Exists(path))
             {
                 FileStream fs = File.Create(path);
@@ -38,6 +39,21 @@ namespace PTVision
             {
                 textboxPath.Text = File.ReadAllText(path);
             }
+        }
+
+        void setupSize()
+        {
+            this.Width = System.Windows.SystemParameters.PrimaryScreenWidth * .75;
+            this.Height = System.Windows.SystemParameters.PrimaryScreenHeight * .75;
+
+            mainGrid.Height = this.Height;
+            mainGrid.Width = this.Width;
+
+            imgFrame.Height = this.Height;
+            imgFrame.Width = this.Width;
+
+
+
         }
 
         private void Button_findSlides_Click(object sender, RoutedEventArgs e)

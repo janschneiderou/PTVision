@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="PTVision.MessageCompositionViews.CompositionInputs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PTVision.MessageCompositionViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="700">
+    <Grid>
+        <TextBox Name="inputText" HorizontalAlignment="Left" Margin="75,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="143" Height="62"/>
+        <Button Name="addButton" Click="addButton_Click" MouseEnter="addButton_MouseEnter" MouseLeave="addButton_MouseLeave" HorizontalAlignment="Left" Margin="256,116,0,0" VerticalAlignment="Top" Height="44" Width="50">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Return to main menu"/>
+                </ToolTip>
+            </Button.ToolTip>
+            <Image Name="addImg" Source="../Images/btn_Add.png"  />
+        </Button>
+
+
+        <Button Name="deleteButton" MouseEnter="deleteButton_MouseEnter" MouseLeave="deleteButton_MouseLeave" Click="deleteButton_Click"  HorizontalAlignment="Left" Margin="256,179,0,0" VerticalAlignment="Top" Height="43" Width="50">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Return to main menu"/>
+                </ToolTip>
+            </Button.ToolTip>
+            <Image Name="deleteImg" Source="../Images/btn_Delete.png"  />
+        </Button>
+
+
+        <ListBox Name="listBoxContent"  Margin="338,116,150,128"/>
+
+
+    </Grid>
+</UserControl>

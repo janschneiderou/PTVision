@@ -36,6 +36,7 @@ namespace PTVision
         {
             InitializeComponent();
 
+            setupSize();
             getSlides();
             setSlideAndText();
             if (Globals.SlideConfigs.Count == 0)
@@ -66,6 +67,22 @@ namespace PTVision
             {
 
             }
+        }
+
+
+        void setupSize()
+        {
+            this.Width = System.Windows.SystemParameters.PrimaryScreenWidth * .75;
+            this.Height = System.Windows.SystemParameters.PrimaryScreenHeight * .75;
+
+            mainGrid.Height = this.Height;
+            mainGrid.Width = this.Width;
+
+            imgFrame.Height = this.Height;
+            imgFrame.Width = this.Width;
+
+
+
         }
 
         void refreshText()

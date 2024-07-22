@@ -8,7 +8,7 @@
             d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
 
-        <Button Name="NonVerbalButton" MouseEnter="NonVerbalButton_MouseEnter" MouseLeave="NonVerbalButton_MouseLeave" Click="NonVerbalButton_Click"  HorizontalAlignment="Left"  BorderThickness="0"  Margin="148,82,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="70" Width="61">
+        <Button Name="NonVerbalButton" MouseEnter="NonVerbalButton_MouseEnter" MouseLeave="NonVerbalButton_MouseLeave" Click="NonVerbalButton_Click"  HorizontalAlignment="Left"  BorderThickness="0"  Margin="148,82,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="100" Width="100">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -31,7 +31,7 @@
             <Image x:Name="imgNonVerbalButton" Source="../Images/btn_Nonverbal_S.png" />
         </Button>
 
-        <Button Name="TipsButton"  MouseEnter="TipsButton_MouseEnter" MouseLeave="TipsButton_MouseLeave" Click="TipsButton_Click"  HorizontalAlignment="Left"  BorderThickness="0"  Margin="283,155,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="70" Width="61">
+        <Button Name="TipsButton"  MouseEnter="TipsButton_MouseEnter" MouseLeave="TipsButton_MouseLeave" Click="TipsButton_Click"  HorizontalAlignment="Left"  BorderThickness="0"  Margin="353,155,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="100" Width="100">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>

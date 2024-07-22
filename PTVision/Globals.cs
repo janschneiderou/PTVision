@@ -145,6 +145,19 @@ namespace PTVision
         public static string usersPathLogs = "";
         #endregion
 
+        #region messageComposition
+        public static List<string> audiencePrevious = new List<string>();
+        public static List<string> audienceAfter = new List<string>();
+
+        public enum CompositionInfo
+        {
+            AUDIENCE_PREVIOUS,
+            AUDIENCE_AFTER
+            
+        };
+
+        #endregion
+
         public static List<SlideConfig> SlideConfigs = new List<SlideConfig>();
         public static PracticeSession practiceSession;
 

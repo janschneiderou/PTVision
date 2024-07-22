@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PTVision"
              mc:Ignorable="d" 
-              d:DesignHeight="600" d:DesignWidth="800" Background="Transparent">
-    <Grid Height="600" Width="800">
-        <Image Source="Images/frame.png" Stretch="Fill" />
-        <TextBox Name="scriptText" Height="460" HorizontalAlignment="Left" Margin="60,39,0,0" Width="341" TextWrapping="Wrap" Text="" VerticalAlignment="Top"
+              d:DesignHeight="800" d:DesignWidth="1000" Background="Transparent">
+    <Grid x:Name="mainGrid" Height="800" Width="1000">
+        <Image Name="imgFrame" Source="Images/container3.png" Stretch="Fill" />
+        <TextBox Name="scriptText" Height="460" HorizontalAlignment="Left" Margin="70,100,0,0" Width="441" TextWrapping="Wrap" Text="" VerticalAlignment="Top"
                    ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" IsEnabled="True" AcceptsReturn="True"/>
-        <Label Content="Write the Script for your presentation" HorizontalAlignment="Left" Margin="289,10,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+        <Label Content="Write the Script for your presentation" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Foreground="#0E7B8C" FontWeight="Bold"/>
 
-        <Button Name="Button_Close" MouseEnter="Button_Close_MouseEnter" MouseLeave="Button_Close_MouseLeave" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="70,0,0,25" VerticalAlignment="Bottom" Click="Button_Close_Click" Height="50" Width="55">
+        <Button Name="Button_Close" MouseEnter="Button_Close_MouseEnter" MouseLeave="Button_Close_MouseLeave" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="70,0,0,105" VerticalAlignment="Bottom" Click="Button_Close_Click" Height="50" Width="55">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -34,7 +34,7 @@
             </Button.Style>
             <Image Name="Button_CloseImg" Source="Images/btn_save_close.png" />
         </Button>
-        <Button Name="chunkButton" MouseEnter="chunkButton_MouseEnter" MouseLeave="chunkButton_MouseLeave" Background="Transparent" HorizontalAlignment="Left" Margin="175,0,0,25" VerticalAlignment="Bottom" Height="50" Width="55" Click="chunkButton_Click">
+        <Button Name="chunkButton" MouseEnter="chunkButton_MouseEnter" MouseLeave="chunkButton_MouseLeave" Background="Transparent" HorizontalAlignment="Left" Margin="175,0,0,105" VerticalAlignment="Bottom" Height="50" Width="55" Click="chunkButton_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -56,8 +56,8 @@
             </Button.Style>
             <Image Name="chunkButtonImg" Source="Images/btn_chunk.png" />
         </Button>
-        <Image Name="slideImg" HorizontalAlignment="Left" Height="215" Margin="444,65,0,0" VerticalAlignment="Top" Width="312"/>
-        <Button Name="buttonPrevious"  MouseEnter="buttonPrevious_MouseEnter" MouseLeave="buttonPrevious_MouseLeave" HorizontalAlignment="Left" Margin="525,300,0,0" VerticalAlignment="Top" Height="35" Click="buttonPrevious_Click">
+        <Image Name="slideImg" HorizontalAlignment="Left" Height="215" Margin="580,65,0,0" VerticalAlignment="Top" Width="312"/>
+        <Button Name="buttonPrevious"  MouseEnter="buttonPrevious_MouseEnter" MouseLeave="buttonPrevious_MouseLeave" HorizontalAlignment="Left" Margin="645,300,0,0" VerticalAlignment="Top" Height="35" Click="buttonPrevious_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -79,7 +79,7 @@
             </Button.Style>
             <Image Name="prevButtonImg" Source="Images/btn_back.png" />
         </Button>
-        <Button Name="buttonNext"  HorizontalAlignment="Left" Margin="650,300,0,0" VerticalAlignment="Top" Height="35" MouseEnter="buttonNext_MouseEnter" MouseLeave="buttonNext_MouseLeave" Click="buttonNext_Click">
+        <Button Name="buttonNext"  HorizontalAlignment="Left" Margin="790,300,0,0" VerticalAlignment="Top" Height="35" MouseEnter="buttonNext_MouseEnter" MouseLeave="buttonNext_MouseLeave" Click="buttonNext_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -101,7 +101,7 @@
             </Button.Style>
             <Image Name="nextButtonImg" Source="Images/btn_next.png" />
         </Button>
-        <Button Name="sentimentButton" MouseEnter="sentimentButton_MouseEnter"  MouseLeave="sentimentButton_MouseLeave"  Background="Transparent" HorizontalAlignment="Left" Margin="275,0,0,25" VerticalAlignment="Bottom" Height="50" Width="55" Click="sentimentButton_Click">
+        <Button Name="sentimentButton" MouseEnter="sentimentButton_MouseEnter"  MouseLeave="sentimentButton_MouseLeave"  Background="Transparent" HorizontalAlignment="Left" Margin="275,0,0,105" VerticalAlignment="Bottom" Height="50" Width="55" Click="sentimentButton_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -128,9 +128,9 @@
             </Button.ToolTip>
             <Image Name="sentimentButtonImg" Source="Images/btn_sentiment.png" />
         </Button>
-        <TextBlock Text="Sentiment analysis:" Foreground="White" Margin="508, 377, 0, 0"/>
+        <TextBlock Text="Sentiment analysis:" Foreground="#0E7B8C" Margin="608, 377, 0, 0"/>
         <TextBlock Name="analyseTextBlock" FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Background="LightGray" Text="{Binding AnalyseText}" VerticalAlignment="Top" Height="100" Width="200"
-                   ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="508,397,0,0" />
+                   ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="608,397,0,0" />
 
     </Grid>
 </UserControl>

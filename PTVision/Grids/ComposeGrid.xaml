@@ -8,7 +8,30 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
 
-        <Button Name="SlidesButton" MouseEnter="SlidesButton_MouseEnter" MouseLeave="SlidesButton_MouseLeave" Click="SlidesButton_Click" HorizontalAlignment="Left"  BorderThickness="0"  Margin="148,82,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="70" Width="61">
+        <Button Name="ComposeButton" MouseEnter="ComposeButton_MouseEnter" MouseLeave="ComposeButton_MouseLeave" Click="ComposeButton_Click" HorizontalAlignment="Left"  BorderThickness="0"  Margin="95,75,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="100" Width="100">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image x:Name="imgComposeButton" Source="../Images/btn_compose1.png" />
+        </Button>
+
+        <Button Name="SlidesButton" MouseEnter="SlidesButton_MouseEnter" MouseLeave="SlidesButton_MouseLeave" Click="SlidesButton_Click" HorizontalAlignment="Left"  BorderThickness="0"  Margin="235,125,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="100" Width="100">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -31,7 +54,7 @@
             <Image x:Name="imgSlidesButton" Source="../Images/btn_I_Slides.png" />
         </Button>
 
-        <Button Name="ScriptButton" MouseEnter="ScriptButton_MouseEnter" MouseLeave="ScriptButton_MouseLeave" Click="ScriptButton_Click" HorizontalAlignment="Left"  BorderThickness="0"  Margin="283,155,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="70" Width="61">
+        <Button Name="ScriptButton" MouseEnter="ScriptButton_MouseEnter" MouseLeave="ScriptButton_MouseLeave" Click="ScriptButton_Click" HorizontalAlignment="Left"  BorderThickness="0"  Margin="363,200,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="100" Width="100">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>

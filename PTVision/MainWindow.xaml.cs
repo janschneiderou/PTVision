@@ -88,7 +88,7 @@ namespace PTVision
             {
                 using (StreamWriter sw = File.CreateText(mediaPPath))
                 {
-                    sw.WriteLine(Environment.CurrentDirectory+ "\\HelpExes\\mediaP.exe");
+                    sw.WriteLine(Environment.CurrentDirectory+ "\\HelpExes\\mediaP\\mediaP.exe");
                 }
             }
             string[] lines = File.ReadAllLines(mediaPPath);

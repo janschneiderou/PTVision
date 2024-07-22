@@ -29,6 +29,7 @@ namespace PTVision.Grids
         public ComposeGrid()
         {
             InitializeComponent();
+            ComposeButton_MouseLeave(null, null);
         }
 
         #region selections
@@ -42,6 +43,11 @@ namespace PTVision.Grids
         private void ScriptButton_Click(object sender, RoutedEventArgs e)
         {
             selectionEvent(this, "script");
+        }
+
+        private void ComposeButton_Click(object sender, RoutedEventArgs e)
+        {
+            selectionEvent(this, "compose");
         }
 
         #endregion
@@ -67,9 +73,19 @@ namespace PTVision.Grids
             imgScriptButton.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_W_W_Script.png"));
         }
 
+        private void ComposeButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgComposeButton.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_compose1O.png"));
+        }
+
+        private void ComposeButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            imgComposeButton.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_compose1.png"));
+        }
+
+
 
         #endregion
-
 
       
     }

@@ -1,0 +1,183 @@
+﻿<UserControl x:Class="PTVision.MessageComposition"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PTVision"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000">
+    <Grid x:Name="mainGrid" Width="1000" Height="800" >
+        <Image Name="imgFrame" Source="Images/container3.png" Stretch="Fill" />
+
+        <Button Name="Before_btn" Click="Before_btn_Click" MouseEnter="Before_btn_MouseEnter"  MouseLeave="Before_btn_MouseLeave" HorizontalAlignment="Left" Margin="115,59,0,0" VerticalAlignment="Top" Height="44" Width="69">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Return to main menu"/>
+                </ToolTip>
+            </Button.ToolTip>
+            <Image Name="BeforeImg" Source="Images/btn_before.png"  />
+        </Button>
+
+
+        <Button Name="Intro_btn" Click="Intro_btn_Click"  HorizontalAlignment="Left" Margin="278,59,0,0" MouseEnter="Intro_btn_MouseEnter" MouseLeave="Intro_btn_MouseLeave" VerticalAlignment="Top" Height="44" Width="69">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Return to main menu"/>
+                </ToolTip>
+            </Button.ToolTip>
+            <Image Name="IntroImg" Source="Images/btn_intro.png" />
+        </Button>
+
+
+        <Button Name="Middle_btn" Click="Middle_btn_Click"  HorizontalAlignment="Center" Margin="0,59,0,0" MouseEnter="Middle_btn_MouseEnter" MouseLeave="Middle_btn_MouseLeave" VerticalAlignment="Top" Height="44" Width="68" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Return to main menu"/>
+                </ToolTip>
+            </Button.ToolTip>
+            <Image Name="MiddleImg" Source="Images/btn_middle.png"  />
+        </Button>
+
+        <Button Name="conclussion_btn" Click="conclussion_btn_Click" HorizontalAlignment="Left" Margin="620,59,0,0" MouseEnter="conclussion_btn_MouseEnter" MouseLeave="conclussion_btn_MouseLeave" VerticalAlignment="Top" Height="44" Width="68">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Return to main menu"/>
+                </ToolTip>
+            </Button.ToolTip>
+            <Image Name="ConclusionImg" Source="Images/btn_conclusion.png"  />
+        </Button>
+
+        <Button Name="after_btn" Click="after_btn_Click" HorizontalAlignment="Left" Margin="782,59,0,0" MouseEnter="after_btn_MouseEnter"  MouseLeave="after_btn_MouseLeave" VerticalAlignment="Top" Height="44" Width="68">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Return to main menu"/>
+                </ToolTip>
+            </Button.ToolTip>
+            <Image Name="afterImg" Source="Images/btn_after.png"  />
+        </Button>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto"  HorizontalScrollBarVisibility="Auto" Margin="25,108,25,0">
+            <Grid x:Name="viewGrids" Background="Transparent" Height="532" VerticalAlignment="Top" ></Grid>
+        </ScrollViewer>
+
+        <Button Name="Button_Close" MouseEnter="Button_Close_MouseEnter" MouseLeave="Button_Close_MouseLeave" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="70,0,0,105" VerticalAlignment="Bottom" Click="Button_Close_Click" Height="50" Width="55">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Name="Button_CloseImg" Source="Images/btn_save_close.png" />
+        </Button>
+        <Grid/>
+
+    </Grid>
+</UserControl>

@@ -35,6 +35,7 @@ namespace PTVision
         public PresentationTips presentationTips;
         public PimpScript pimpScript;
         public VocalExercises vocalExercises;
+        public MessageComposition messageComposition;
 
         public Grids.ReviewGrid reviewGrid;
         public Grids.ComposeGrid composeGrid;
@@ -254,6 +255,18 @@ namespace PTVision
                 workingWithScript.Visibility = Visibility.Collapsed;
                 myGrid.Children.Remove(workingWithScript);
               //  Grid_for_Mode_Selection.Visibility = Visibility.Visible;
+                locateTutor();
+            }));
+        }
+
+        private void MessageComposition_exitEvent(object sender, string x)
+        {
+            
+            Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate
+            {
+                messageComposition.Visibility = Visibility.Collapsed;
+                myGrid.Children.Remove(messageComposition);
+                //  Grid_for_Mode_Selection.Visibility = Visibility.Visible;
                 locateTutor();
             }));
         }
@@ -658,6 +671,9 @@ namespace PTVision
                 case "script":
                     addWorkWithScript();
                     break;
+                case "compose":
+                    addCompose();
+                    break;
             }
         }
 
@@ -734,6 +750,29 @@ namespace PTVision
             //    learningDesign.Tasks.Remove(learningDesign.Tasks[0]);
             //}
         }
+
+        private void addCompose()
+        {
+            // Grid_for_Mode_Selection.Visibility = Visibility.Collapsed;
+            Tutor.Visibility = Visibility.Collapsed;
+            messageComposition = new MessageComposition();
+            myGrid.Children.Add(messageComposition);
+
+            messageComposition.Margin = new Thickness(0, 0, 0, 0);
+            messageComposition.VerticalAlignment = VerticalAlignment.Center;
+            messageComposition.HorizontalAlignment = HorizontalAlignment.Center;
+            messageComposition.Visibility = Visibility.Visible;
+
+
+            //if (learningDesign.Tasks[0].taskType == LearningDesign.TaskType.WRITESCRIPT)
+            //{
+            //    learningDesign.Tasks.Remove(learningDesign.Tasks[0]);
+            //}
+
+            messageComposition.exitEvent += MessageComposition_exitEvent;
+        }
+
+       
 
         private void addWorkWithScript()
         {
