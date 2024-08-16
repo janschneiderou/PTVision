@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PTVision.LogObjects;
 
 namespace PTVision
 {
@@ -136,7 +139,9 @@ namespace PTVision
             Globals.usersPathVideos = System.IO.Path.Combine(Globals.presentationPath, "Videos");
             Globals.usersPathLogs = System.IO.Path.Combine(Globals.presentationPath, "Logs");
 
+
             Globals.scriptPath = System.IO.Path.Combine(Globals.usersPathScripts + "\\Script.txt");
+            Globals.usersPathComposition = System.IO.Path.Combine(Globals.usersPathScripts + "\\composition.txt");
 
             bool exists = System.IO.Directory.Exists(Globals.presentationPath);
             if (!exists)
@@ -150,7 +155,47 @@ namespace PTVision
 
             userGrid.Visibility = Visibility.Visible;
             presentationGrid.Visibility = Visibility.Collapsed;
+            loadComposition();
             exitEvent(this, "");
+        }
+
+        void loadComposition ()
+        {
+            string path = Globals.usersPathComposition;
+            if (File.Exists(path))
+            {
+                try
+                {
+                    using (StreamReader file = File.OpenText(path))
+                    using (JsonTextReader reader = new JsonTextReader(file))
+                    {
+
+                        JObject o2 = (JObject)JToken.ReadFrom(reader);
+                        string json = o2.ToString(Newtonsoft.Json.Formatting.None);
+
+
+                        LogObjects.MessageStructure MessageStructure = new LogObjects.MessageStructure();
+
+                        MessageStructure =  Newtonsoft.Json.JsonConvert.DeserializeObject<LogObjects.MessageStructure>(json);
+
+                        Globals.MessageStructure = MessageStructure;
+
+                    }
+                }
+                catch
+                {
+
+                }
+                
+            }
+            else
+            {
+                //if (!File.Exists(path))
+                //{
+                //    FileStream fs = File.Create(path);
+                //}
+            }
+            
         }
 
         #region button animations

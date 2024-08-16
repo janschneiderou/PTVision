@@ -63,8 +63,8 @@ namespace PTVision
             imgFrame.Height = this.Height;
             imgFrame.Width = this.Width;
 
-            myVideo.Width = this.Width - 350;
-            myVideo.Height = this.Height - 300;
+            myVideo.Width = this.Width - 450;
+           // myVideo.Height = this.Height - 300;
 
 
         }

@@ -7,32 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
     <Grid x:Name="mainGrid" Width="1000" Height="800" >
-        <Image Name="imgFrame" Source="Images/frame.png" Stretch="Fill" />
-        <Image Name="myImage" HorizontalAlignment="Left" Height="599" Margin="60,60,0,0" VerticalAlignment="Top" Width="750"/>
+        <Image Name="imgFrame" Source="Images/container3.png" Stretch="Fill" />
+        <Image Name="myImage" HorizontalAlignment="Left" Height="569" Margin="70,87,0,0" VerticalAlignment="Top" Width="700"/>
         <Image Name="FeedbackImg" HorizontalAlignment="Center" Height="100" Margin="0,0,50,20" VerticalAlignment="Center" Width="100" Source="Images/Correct.png" Visibility="Collapsed"/>
 
 
-        <ScrollViewer Width="176" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Right" Height="700" Margin="0,50,10,50" >
+        <ScrollViewer Width="176" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Margin="770,61,0,275" >
             <Canvas>
-                <Label Content="Exercises" Canvas.Left="20" Canvas.Top="5" FontWeight="Bold" Foreground="White"/>
-
-                
-                <CheckBox Content="Stretch and relax" Name="CB_Stretch_Relax" Canvas.Left="30" Canvas.Top="55" Unchecked="CB_Stretch_Relax_Unchecked" Checked="CB_Stretch_Relax_Checked" Foreground="White"/>
-                <CheckBox Content="Lips one" Name="CB_Lips_Ba" Canvas.Left="30" Canvas.Top="85" Unchecked="CB_Lips_Ba_Unchecked" Checked="CB_Lips_Ba_Checked" Foreground="White"/>
-               
-                <CheckBox Content="Tongue one" Name="CB_Tongue_La" Canvas.Left="30" Canvas.Top="115" Unchecked="CB_Tongue_La_Unchecked" Checked="CB_Tongue_La_Checked" Foreground="White"/>
-                
-                <CheckBox Content="High and low" Name="CB_We_Ah" Canvas.Left="30" Canvas.Top="145" Unchecked="CB_We_Ah_Unchecked" Checked="CB_We_Ah_Checked" Foreground="White"/>
+                <Label Content="Exercises" Canvas.Left="20" Canvas.Top="5" FontWeight="Bold" Foreground="#0E7B8C"/>
 
 
-                <Label Name="CounterLabel" Background="White" Content="0" Foreground="Black" FontSize="34" HorizontalAlignment="Center" Margin="60,250,0,0" VerticalAlignment="Top"/>
+                <CheckBox Content="Stretch and relax" Name="CB_Stretch_Relax" Canvas.Left="30" Canvas.Top="55" Unchecked="CB_Stretch_Relax_Unchecked" Checked="CB_Stretch_Relax_Checked" Foreground="#0E7B8C"/>
+                <CheckBox Content="Lips one" Name="CB_Lips_Ba" Canvas.Left="30" Canvas.Top="85" Unchecked="CB_Lips_Ba_Unchecked" Checked="CB_Lips_Ba_Checked" Foreground="#0E7B8C"/>
+
+                <CheckBox Content="Tongue one" Name="CB_Tongue_La" Canvas.Left="30" Canvas.Top="115" Unchecked="CB_Tongue_La_Unchecked" Checked="CB_Tongue_La_Checked" Foreground="#0E7B8C"/>
+
+                <CheckBox Content="High and low" Name="CB_We_Ah" Canvas.Left="30" Canvas.Top="145" Unchecked="CB_We_Ah_Unchecked" Checked="CB_We_Ah_Checked" Foreground="#0E7B8C"/>
+
+
+                <Label Name="CounterLabel" Background="White" Content="0" Foreground="#0E7B8C" FontSize="34" HorizontalAlignment="Center" Margin="60,250,0,0" VerticalAlignment="Top"/>
 
             </Canvas>
         </ScrollViewer>
 
-        
 
-        <Button Name="Return" BorderThickness="0" Background="Transparent" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave" FontSize="15" HorizontalAlignment="Left" Margin="65,0,0,65" VerticalAlignment="Bottom" Click="Return_Click" Height="50" Width="57" >
+
+        <Button Name="Return" BorderThickness="0" Background="Transparent" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave" FontSize="15" HorizontalAlignment="Left" Margin="80,0,0,80" VerticalAlignment="Bottom" Click="Return_Click" Height="50" Width="57" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -59,7 +59,8 @@
             </Button.ToolTip>
             <Image Name="ReturnImg" Source="Images/btn_return.png" />
         </Button>
-        <Label Name="InstructionLabel" Background="White" Content="Instruction" Foreground="Black" FontSize="34" HorizontalAlignment="Left" Margin="90,570,0,0" VerticalAlignment="Top"/>
+
+        <local:FeedbackObject x:Name="InstructionLabel"  HorizontalAlignment="Left" Margin="50,550,0,0"  Height="100" Width="900" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

@@ -1,6 +1,8 @@
 ﻿using PTVision.MessageCompositionViews;
+using PTVision.utilObjects;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,15 +24,21 @@ namespace PTVision
     public partial class MessageComposition : UserControl
     {
 
-        bool before = true;
+        bool before = false;
         bool intro = false;
         bool middle = false;
         bool conclusion = false;
         bool after = false;
+        bool outro = false;
+        bool topic = true;
 
         Before Before;
         After After;
         Introduction Introduction;
+        Conclusion Conclusion;
+        Middle Middle;
+        OutroComposition Outro;
+        Topic Topic;
 
         public delegate void ExitEvent(object sender, string x);
         public event ExitEvent exitEvent;
@@ -39,7 +47,7 @@ namespace PTVision
         {
             InitializeComponent();
 
-            BeforeImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_beforeO.png"));
+            
             addViews();
 
 
@@ -63,12 +71,25 @@ namespace PTVision
             Introduction = new Introduction();
             Introduction.doneEvent += Introduction_doneEvent;
             viewGrids.Children.Add(Introduction);
+
+            Conclusion = new Conclusion();
+            Conclusion.doneEvent += Conclusion_doneEvent;
+            viewGrids.Children.Add(Conclusion);
+
+
+            Middle = new Middle();
+            Middle.doneEvent += Middle_doneEvent;
+            viewGrids.Children.Add(Middle);
+
+            Outro = new OutroComposition();
+            viewGrids.Children.Add(Outro);
+
+            Topic = new Topic();
+            Topic.doneEvent += Topic_doneEvent;
+            viewGrids.Children.Add(Topic);
         }
 
-        private void Introduction_doneEvent(object sender, string x)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         void resetbuttons ()
         {
@@ -80,6 +101,15 @@ namespace PTVision
         }
 
         #region doneEvents
+
+        private void Topic_doneEvent(object sender, string x)
+        {
+
+            Before_btn_Click(null, null);
+            BeforeImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_beforeO.png"));
+        }
+
+
         private void Before_doneEvent(object sender, string x)
         {
             
@@ -97,39 +127,104 @@ namespace PTVision
 
         }
 
+        private void Introduction_doneEvent(object sender, string x)
+        {
+            conclussion_btn_Click(null, null);
+            Intro_btn_MouseLeave(null, null);
+        }
+
+        private void Conclusion_doneEvent(object sender, string x)
+        {
+            Middle_btn_Click(null, null);
+            conclussion_btn_MouseLeave(null, null);
+        }
+
+        private void Middle_doneEvent(object sender, string x)
+        {
+            outro = true;
+            middle = false;
+            Middle_btn_MouseLeave(null, null);
+            setView();
+        }
+
+
         #endregion
 
         void setView()
         {
+           
+
            if(before) 
            {
                 Before.Visibility= Visibility.Visible;
                 After.Visibility = Visibility.Collapsed;
                 Introduction.Visibility= Visibility.Collapsed;
+                Conclusion.Visibility= Visibility.Collapsed;
+                Middle.Visibility= Visibility.Collapsed;
+                Outro.Visibility= Visibility.Collapsed;
+                Topic.Visibility = Visibility.Collapsed;
+
             }
            else if(intro) 
            {
                Before.Visibility = Visibility.Collapsed;
                 After.Visibility = Visibility.Collapsed;
                 Introduction.Visibility = Visibility.Visible;
+                Conclusion.Visibility = Visibility.Collapsed;
+                Middle.Visibility = Visibility.Collapsed;
+                Outro.Visibility = Visibility.Collapsed;
+                Topic.Visibility = Visibility.Collapsed;
             }
            else if (middle) 
            {
                Before.Visibility = Visibility.Collapsed;
                After.Visibility = Visibility.Collapsed;
                Introduction.Visibility = Visibility.Collapsed;
+               Conclusion.Visibility = Visibility.Collapsed;
+                Middle.Visibility = Visibility.Visible;
+                Outro.Visibility = Visibility.Collapsed;
+                Topic.Visibility = Visibility.Collapsed;
             }
            else if (conclusion) 
            {
                 Before.Visibility = Visibility.Collapsed;
                 After.Visibility = Visibility.Collapsed;
                 Introduction.Visibility = Visibility.Collapsed;
-           }
+                Conclusion.Visibility = Visibility.Visible;
+                Middle.Visibility = Visibility.Collapsed;
+                Outro.Visibility = Visibility.Collapsed;
+                Topic.Visibility = Visibility.Collapsed;
+            }
            else if (after)
            {
                 Before.Visibility = Visibility.Collapsed;
                 After.Visibility = Visibility.Visible;
                 Introduction.Visibility = Visibility.Collapsed;
+                Conclusion.Visibility = Visibility.Collapsed;
+                Middle.Visibility = Visibility.Collapsed;
+                Outro.Visibility = Visibility.Collapsed;
+                Topic.Visibility = Visibility.Collapsed;
+            }
+           else if (outro)
+            {
+                Before.Visibility = Visibility.Collapsed;
+                After.Visibility = Visibility.Collapsed;
+                Introduction.Visibility = Visibility.Collapsed;
+                Conclusion.Visibility = Visibility.Collapsed;
+                Middle.Visibility = Visibility.Collapsed;
+                Outro.Visibility = Visibility.Visible;
+                Topic.Visibility = Visibility.Collapsed;
+                Outro.loadContent();
+            }
+           else if(topic)
+            {
+                Before.Visibility = Visibility.Collapsed;
+                After.Visibility = Visibility.Collapsed;
+                Introduction.Visibility = Visibility.Collapsed;
+                Conclusion.Visibility = Visibility.Collapsed;
+                Middle.Visibility = Visibility.Collapsed;
+                Outro.Visibility = Visibility.Collapsed;
+                Topic.Visibility = Visibility.Visible;
             }
 
         }
@@ -187,7 +282,7 @@ namespace PTVision
         {
             if(!conclusion)
             {
-                ConclusionImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_Conclusion.png"));
+                ConclusionImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_conclusion.png"));
             }
           
         }
@@ -223,8 +318,11 @@ namespace PTVision
 
         private void Button_Close_Click(object sender, RoutedEventArgs e)
         {
+            saveFile();
             exitEvent(this, "");
         }
+
+
 
 
         private void Before_btn_Click(object sender, RoutedEventArgs e)
@@ -234,6 +332,7 @@ namespace PTVision
             middle = false;
             conclusion = false;
             after = false;
+            topic = false;
 
             setView();
         }
@@ -245,8 +344,10 @@ namespace PTVision
             middle = false;
             conclusion = false;
             after = false;
+            topic = false;
 
             setView();
+            IntroImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_introO.png"));
         }
 
         private void Middle_btn_Click(object sender, RoutedEventArgs e)
@@ -256,8 +357,11 @@ namespace PTVision
             middle = true;
             conclusion = false; 
             after = false;
-
+            topic = false;
+            MiddleImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_middleO.png"));
             setView();
+
+           
         }
 
         private void conclussion_btn_Click(object sender, RoutedEventArgs e)
@@ -267,8 +371,10 @@ namespace PTVision
             middle = false;
             conclusion = true;
             after = false;
+            topic = false;
 
             setView();
+            ConclusionImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_conclusionO.png"));
         }
 
         private void after_btn_Click(object sender, RoutedEventArgs e)
@@ -278,11 +384,42 @@ namespace PTVision
             middle = false;
             conclusion = false;
             after = true;
-
+            topic = false;
             setView();
 
             afterImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\btn_afterO.png"));
 
+        }
+
+        #endregion
+
+        #region save stuff
+
+        void saveFile ()
+        {
+            try
+            {
+                string path = "";
+                path= Globals.usersPathComposition;
+                Globals.scriptPath = path;
+                if (!File.Exists(path))
+                {
+                    FileStream fs = File.Create(path);
+                    fs.Close();
+                }
+
+                string myString = Newtonsoft.Json.JsonConvert.SerializeObject(Globals.MessageStructure);
+                Console.WriteLine(myString);
+
+                
+
+               
+                File.WriteAllText(path, myString);
+            }
+            catch (Exception ee)
+            {
+                int x = 0;
+            }
         }
 
         #endregion

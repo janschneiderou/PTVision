@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PTVision.LogObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -22,6 +23,7 @@ namespace PTVision.MessageCompositionViews
     public partial class CompositionInputs : UserControl
     {
         Globals.CompositionInfo info;
+        IntroductionStarters intros;
 
 
         public CompositionInputs()
@@ -38,7 +40,7 @@ namespace PTVision.MessageCompositionViews
             switch(info)
             {
                 case Globals.CompositionInfo.AUDIENCE_PREVIOUS:
-                    foreach (string s in Globals.audiencePrevious)
+                    foreach (string s in Globals.MessageStructure.audiencePrevious)
                     {
                         listBoxContent.Items.Add(s);
                     }
@@ -50,6 +52,15 @@ namespace PTVision.MessageCompositionViews
             
         }
 
+        public void initItems(LogObjects.IntroductionStarters intros)
+        {
+            this.intros = intros;
+            info = Globals.CompositionInfo.INTRODUCTION;
+          
+
+
+        }
+
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             listBoxContent.Items.Add(inputText.Text);
@@ -57,10 +68,28 @@ namespace PTVision.MessageCompositionViews
             switch (info)
             {
                 case Globals.CompositionInfo.AUDIENCE_PREVIOUS:
-                    Globals.audiencePrevious.Add(inputText.Text);
+                    Globals.MessageStructure.audiencePrevious.Add(inputText.Text);
                     break;
                 case Globals.CompositionInfo.AUDIENCE_AFTER:
-                    Globals.audienceAfter.Add(inputText.Text);
+                    Globals.MessageStructure.audienceAfter.Add(inputText.Text);
+                    break;
+                case Globals.CompositionInfo.INTRODUCTION:
+                    foreach(IntroductionStarters intro in Globals.MessageStructure.introductionStarters)
+                    {
+                        if(intro.starter == intros.starter)
+                        {
+                            intro.pointers.Add(inputText.Text);
+                        }
+                    }
+                    break;
+                case Globals.CompositionInfo.CONCLUSION_BRACKETS:
+                    Globals.MessageStructure.conclusionLogs.openBrackets.Add(inputText.Text);
+                    break;
+                case Globals.CompositionInfo.CONCLUSION_FINAL:
+                    Globals.MessageStructure.conclusionLogs.finalMessage.Add(inputText.Text);
+                    break;
+                case Globals.CompositionInfo.MIDDLE:
+                    Globals.MessageStructure.middleStatements.Add(inputText.Text);
                     break;
             }
 
@@ -77,10 +106,10 @@ namespace PTVision.MessageCompositionViews
                 switch (info)
                 {
                     case Globals.CompositionInfo.AUDIENCE_PREVIOUS:
-                        Globals.audiencePrevious.RemoveAt(index);
+                        Globals.MessageStructure.audiencePrevious.RemoveAt(index);
                         break;
                     case Globals.CompositionInfo.AUDIENCE_AFTER:
-                        Globals.audienceAfter.RemoveAt(index);
+                        Globals.MessageStructure.audienceAfter.RemoveAt(index);
                         break;
                 }
                 listBoxContent.Items.RemoveAt(index);

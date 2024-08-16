@@ -22,14 +22,25 @@ namespace PTVision.MessageCompositionViews
     {
 
         double marginBetween = 10;
-        int dialogs = 7;
+        int dialogs = 8;
         int inputs = 2;
         Label[] textDialogs;
         Image[] SpeechBubbles;
         TextBox[] textInputs;
+
+        List <string> selections = new List <string>();
+        //List<Image> selectionBubbles = new List<Image>();
+        //List<Label> selectionDialogs = new List<Label>();
+
+        bool noPointersSelected = true;
+      
+
         int currentDialgog = 0;
+        int currentSelection = 0;
+        int totalSelections = 0;
         double currentTop = 0;
-        CompositionInputs currentKnowledge;
+        CompositionSelections starters;
+     
         double inputDisplacement = 0;
 
         public delegate void DoneEvent(object sender, string x);
@@ -49,13 +60,11 @@ namespace PTVision.MessageCompositionViews
             currentTop = Canvas.GetTop(parrotImg);
             inputDisplacement = parrotImg.Height;
             initSpeechBubbles();
+            currentDialgog++;
         }
 
         void initSpeechBubbles()
         {
-
-
-
 
             currentTop = Canvas.GetTop(parrotImg);
 
@@ -111,6 +120,44 @@ namespace PTVision.MessageCompositionViews
             }
         }
 
+        void initSelectionBubbles()
+        {
+            Image myImage = new Image();
+            myImage.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\SpeechBubble.png"));
+            myImage.Height = 70;
+            myImage.Width = 750;
+            myImage.Stretch = Stretch.Fill;
+
+            dialogCanvas.Children.Add(myImage);
+
+            
+            Canvas.SetTop(myImage, currentTop - 20);
+            Canvas.SetLeft(myImage, 121);
+            myImage.Visibility = Visibility.Visible;
+
+            Label myLabel = new Label();
+            myLabel.Height = 60;
+            myLabel.Width = 650;
+            dialogCanvas.Children.Add(myLabel);
+            Canvas.SetTop(myLabel, currentTop - 10);
+            Canvas.SetLeft(myLabel, 166);
+            myLabel.IsEnabled = false;
+            switch(selections.ElementAt(currentSelection))
+            {
+                case "Tell as story":
+                    myLabel.Content = "Write some pointers for your story";
+                    break;
+                case "Tell an impresive fact":
+                    myLabel.Content = "Write some pointers for your fact";
+                    break;
+                case "Ask a question":
+                    myLabel.Content = "Write your question";
+                    break;
+
+            }
+            
+        }
+
 
         #region buttonAnimations
 
@@ -133,27 +180,155 @@ namespace PTVision.MessageCompositionViews
         {
             if (currentDialgog < dialogs)
             {
-                double parrotTop = Canvas.GetTop(parrotImg);
-
-
-                currentTop = currentTop + inputDisplacement + marginBetween;
-
-                if (dialogCanvas.Height < currentTop)
+                explanationDialogs();
+                if (currentDialgog == 3) 
                 {
                     dialogCanvas.Height = currentTop + parrotImg.Height;
+                    myScroll.ScrollToBottom();
                 }
-                Canvas.SetTop(parrotImg, currentTop);
-               
-                initSpeechBubbles();
-                myScroll.ScrollToBottom();
-                inputDisplacement = parrotImg.Height;
-                currentDialgog++;
-
 
             }
+            if(currentDialgog==7)
+            {
+                currentTop = currentTop + marginBetween;
+                starters = new CompositionSelections();
+                starters.initItems(Globals.CompositionInfo.INTRODUCTION);
+                starters.addEvent += Starters_addEvent;
+                starters.deleteEvent += Starters_deleteEvent;
+                dialogCanvas.Children.Add(starters);
+                Canvas.SetTop(starters, currentTop);
+                Canvas.SetLeft(starters, 40);
+                inputDisplacement = starters.Height;
+                currentTop = currentTop + inputDisplacement;
+                dialogCanvas.Height = currentTop - marginBetween;
+                inputDisplacement = 0;
+                myScroll.ScrollToBottom();
+                
+                currentDialgog++;
+            }
+            if (currentDialgog >= 8)
+            {
+                doInputsForIntroIdeas();
+            }
+
+               
+
         }
 
-            #endregion
+        void explanationDialogs()
+        {
+            double parrotTop = Canvas.GetTop(parrotImg);
+
+
+            currentTop = currentTop + inputDisplacement + marginBetween;
+
+            if (dialogCanvas.Height < currentTop)
+            {
+                dialogCanvas.Height = currentTop + parrotImg.Height;
+            }
+            Canvas.SetTop(parrotImg, currentTop);
+
+            initSpeechBubbles();
+
+            myScroll.ScrollToBottom();
+            inputDisplacement = parrotImg.Height;
+            currentDialgog++;
+        }
+
+        void doInputsForIntroIdeas()
+        {
+            if (Globals.MessageStructure.introductionStarters.Count > 0)
+            {
+                if (currentSelection != totalSelections && noPointersSelected==true)
+                {
+                    double parrotTop = Canvas.GetTop(parrotImg);
+
+
+                    currentTop = currentTop + inputDisplacement + marginBetween;
+
+                    if (dialogCanvas.Height < currentTop)
+                    {
+                        dialogCanvas.Height = currentTop + parrotImg.Height;
+                    }
+                    Canvas.SetTop(parrotImg, currentTop);
+
+                    initSelectionBubbles();
+                    myScroll.ScrollToBottom();
+                    inputDisplacement = parrotImg.Height;
+
+                    addPointers();
+                    noPointersSelected = false;
+                }
+                if(noPointersSelected==false)
+                {
+                    if(Globals.MessageStructure.introductionStarters.ElementAt(currentSelection).pointers.Count>0)
+                    {
+                        currentSelection++;
+                        noPointersSelected=true;
+                    }
+                }
+                if(totalSelections==currentSelection)
+                {
+                    doneEvent(this, "");
+                }
+              
+               
+
+                
+            }
+
+
+
+        }
+
+        void addPointers()
+        {
+            currentTop = currentTop + marginBetween;
+            CompositionInputs pointers = new CompositionInputs();
+            pointers.initItems(Globals.MessageStructure.introductionStarters.ElementAt(currentSelection));
+
+            dialogCanvas.Children.Add(pointers);
+            Canvas.SetTop(pointers, currentTop);
+            Canvas.SetLeft(pointers, 40);
+            inputDisplacement = pointers.Height;
+            currentTop = currentTop + inputDisplacement;
+            dialogCanvas.Height = currentTop - marginBetween;
+            inputDisplacement = 0;
+            myScroll.ScrollToBottom();
+        }
+
+        private void Starters_deleteEvent(object sender, string x)
+        {
+            if(totalSelections>0) 
+            {
+                totalSelections--;
+                int i = 0;
+                int j = -1;
+                foreach (string l in selections)
+                {
+                    if(l==x)
+                    {
+                        j = i;
+                        break;
+
+                    }
+                    i++;
+                }
+                if(j!=-1)
+                {
+                    selections.RemoveAt(j);
+                }
+            }
+            
+        }
+
+        private void Starters_addEvent(object sender, string x)
+        {
+            selections.Add(x);
+            totalSelections++;
+        }
+
+        #endregion
 
     }
 }

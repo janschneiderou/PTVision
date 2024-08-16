@@ -143,16 +143,35 @@ namespace PTVision
         public static string usersPathScripts = "";
         public static string usersPathVideos = "";
         public static string usersPathLogs = "";
+        public static string usersPathComposition = "";
         #endregion
 
         #region messageComposition
-        public static List<string> audiencePrevious = new List<string>();
-        public static List<string> audienceAfter = new List<string>();
+        
+        public enum StarterType
+        {
+            STORY,
+            QUESTION,
+            FACT
+        }
+
+        //public static string presentationTopic = "";
+        //public static List<string> audiencePrevious = new List<string>();
+        //public static List<string> audienceAfter = new List<string>();
+        //public static List<string> middleStatements = new List<string>();
+        //public static List<IntroductionStarters> introductionStarters = new List<IntroductionStarters>();
+        //public static ConclusionLogs conclusionLogs = new ConclusionLogs();
+        public static MessageStructure MessageStructure = new MessageStructure();
 
         public enum CompositionInfo
         {
             AUDIENCE_PREVIOUS,
-            AUDIENCE_AFTER
+            AUDIENCE_AFTER,
+            INTRODUCTION, 
+            CONCLUSION_BRACKETS,
+            CONCLUSION_FINAL, 
+            MIDDLE, 
+            TOPIC
             
         };
 

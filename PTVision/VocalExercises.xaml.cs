@@ -21,6 +21,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Brushes = System.Windows.Media.Brushes;
 
 namespace PTVision
 {
@@ -75,7 +76,13 @@ namespace PTVision
             analysisMedia = new PoseAnalysisMedia();
             currentExercise = currentCase.RAISEARMS;
             CounterLabel.Content = currentCount.ToString();
-            initWebcam();
+            InstructionLabel.FeedbackLabel.FontSize = 24;
+            InstructionLabel.FeedbackLabel.Foreground = Brushes.Black;
+            InstructionLabel.speechBubble.Width = 800;
+            // InstructionLabel.FeedbackLabel.HorizontalAlignment = HorizontalAlignment.Left;
+            InstructionLabel.FeedbackLabel.Width = 700;
+            InstructionLabel.FeedbackLabel.Background = Brushes.Transparent;
+             initWebcam();
         }
 
 
@@ -274,7 +281,7 @@ namespace PTVision
                     break;
                 case currentCase.WE_AH:
                     Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
-                        InstructionLabel.Content = "Good work!"; 
+                        InstructionLabel.FeedbackLabel.Content = "Good work!"; 
                         CounterLabel.Content = currentCount.ToString();
 
                     }));
@@ -302,7 +309,7 @@ namespace PTVision
         {
             
             Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
-                InstructionLabel.Content = "Say " + Globals.words[exercise].Text + "\n" + exerciseHelper; ;
+                InstructionLabel.FeedbackLabel.Content = "Say " + Globals.words[exercise].Text + " " + exerciseHelper; ;
                 CounterLabel.Content = currentCount.ToString();
 
             }));
@@ -320,7 +327,7 @@ namespace PTVision
             {
                 
                 Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
-                    InstructionLabel.Content = "While inhaling, \nRaise arms and stretch yourself!";
+                    InstructionLabel.FeedbackLabel.Content = "While inhaling, Raise arms and stretch yourself!";
                     CounterLabel.Content = currentCount.ToString();
 
                 }));
@@ -335,7 +342,7 @@ namespace PTVision
             else
             {
                 Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
-                    InstructionLabel.Content = "Lower your arms and relax while saying \"AAAAAhhhhh\"";
+                    InstructionLabel.FeedbackLabel.Content = "Lower your arms and relax while saying \"AAAAAhhhhh\"";
                     
 
                 }));

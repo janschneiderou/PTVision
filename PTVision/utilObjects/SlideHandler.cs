@@ -47,37 +47,41 @@ namespace PTVision.utilObjects
 
         void getSlideNames()
         {
-            string path = System.IO.Path.Combine(Globals.presentationPath + "\\Slides.txt");
-            if (!File.Exists(path))
+            if(Globals.presentationPath !="")
             {
-                FileStream fs = File.Create(path);
-                fs.Close();
-
-            }
-            else
-            {
-                Globals.SlidesPath = File.ReadAllText(path);
-            }
-            if(Globals.SlidesPath != "" || Globals.SlidesPath != null)
-            {
-                bool exists = System.IO.Directory.Exists(Globals.SlidesPath);
-
-                if ( exists)
+                string path = System.IO.Path.Combine(Globals.presentationPath + "\\Slides.txt");
+                if (!File.Exists(path))
                 {
-                    var files = from file in Directory.EnumerateFiles(Globals.SlidesPath) select file;
+                    FileStream fs = File.Create(path);
+                    fs.Close();
 
-                    foreach (var file in files)
+                }
+                else
+                {
+                    Globals.SlidesPath = File.ReadAllText(path);
+                }
+                if (Globals.SlidesPath != "" || Globals.SlidesPath != null)
+                {
+                    bool exists = System.IO.Directory.Exists(Globals.SlidesPath);
+
+                    if (exists)
                     {
-                        if (file.IndexOf("Slide") != -1 && file.IndexOf(".PNG") != -1)
+                        var files = from file in Directory.EnumerateFiles(Globals.SlidesPath) select file;
+
+                        foreach (var file in files)
                         {
-                            SlideConfig slideConfig = new SlideConfig();
-                            slideConfig.fileName = file;
-                            Globals.SlideConfigs.Add(slideConfig);
+                            if (file.IndexOf("Slide") != -1 && file.IndexOf(".PNG") != -1)
+                            {
+                                SlideConfig slideConfig = new SlideConfig();
+                                slideConfig.fileName = file;
+                                Globals.SlideConfigs.Add(slideConfig);
+                            }
                         }
                     }
+
                 }
-               
             }
+          
             
         }
 

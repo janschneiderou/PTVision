@@ -5,22 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PTVision"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="900">
-    <Grid x:Name="mainGrid" Height="600" Width="900">
-        <Image Name="imgFrame" Source="Images/frame.png" Stretch="Fill" Margin="0,0,0,0" />
-        <Label Name="PrevSentenceLabel" Foreground="AntiqueWhite" Content="" HorizontalAlignment="Left" Height="29" Margin="107,24,0,0" VerticalAlignment="Top" Width="278"/>
-        <Label Name="NextSentenceLabel" Foreground="AntiqueWhite" Content="" HorizontalAlignment="Left" Height="29" Margin="103,76,0,0" VerticalAlignment="Top" Width="282"/>
-        <TextBox Name="CurrentSentence" HorizontalAlignment="Left" Margin="107,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
-        <Label Name="QuestionsLabel" Foreground="White" Content="How do you want to pimp the sentence? \n what do you want to communicate with it?" HorizontalAlignment="Left" Height="49" Margin="103,111,0,0" VerticalAlignment="Top" Width="390"/>
-        <ComboBox Name="ComboImprovement" SelectionChanged="Improvement_SelectionChanged" HorizontalAlignment="Left" Margin="107,165,0,0" VerticalAlignment="Top" Width="194"/>
-        <Label Foreground="White" Content="Technique:" HorizontalAlignment="Left" Height="29" Margin="103,207,0,0" VerticalAlignment="Top" Width="198"/>
-        <ComboBox Name="ComboTechnique" SelectionChanged="Technique_SelectionChanged" HorizontalAlignment="Left" Margin="107,241,0,0" VerticalAlignment="Top" Width="194"/>
-        <Label Foreground="White" Content="Description:" HorizontalAlignment="Left" Height="29" Margin="103,266,0,0" VerticalAlignment="Top" Width="198"/>
-        <TextBox Name="descriptionTxt" HorizontalAlignment="Left" Height="200" Margin="103,300,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="282"/>
-        <TextBox Name="FeedbackTxt" HorizontalAlignment="Left" Margin="500,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
+             d:DesignHeight="800" d:DesignWidth="1000">
+    <Grid x:Name="mainGrid" Height="800" Width="1000">
+        <Image Name="imgFrame" Source="Images/container3.png" Stretch="Fill" Margin="0,0,0,0" />
 
-        <MediaElement Name="myVideo" LoadedBehavior="Manual" UnloadedBehavior="Manual" HorizontalAlignment="Right" Height="200" Margin="0,300,88,0" VerticalAlignment="Top" Width="297"/>
-        <Button Name="Play" MouseEnter="Play_MouseEnter" MouseLeave="Play_MouseLeave" BorderThickness="0" Background="Transparent" FontSize="15" HorizontalAlignment="Left" Margin="586,0,0,42" VerticalAlignment="Bottom" Click="Play_Click" Height="50" Width="57" >
+
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="152" Margin="67,83,0,0" VerticalAlignment="Top" Width="832"/>
+
+        <Label  Foreground="#0E7B8C" Content="Sentence you want to work with" HorizontalAlignment="Left" Height="29" Margin="142,90,0,0" VerticalAlignment="Top" Width="278"/>
+        <Label  Foreground="#0E7B8C" Content="Feedback for the sentence" HorizontalAlignment="Left" Height="29" Margin="586,90,0,0" VerticalAlignment="Top" Width="278"/>
+
+        <Label Name="PrevSentenceLabel" Foreground="Black" Content="" HorizontalAlignment="Left" Height="29" Margin="142,114,0,0" VerticalAlignment="Top" Width="278"/>
+        <Label Name="NextSentenceLabel" Foreground="Black" Content="" HorizontalAlignment="Left" Height="29" Margin="140,184,0,0" VerticalAlignment="Top" Width="282"/>
+        <TextBox Name="CurrentSentence" HorizontalAlignment="Left" Margin="141,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
+        <Label Name="QuestionsLabel" Foreground="#0E7B8C" Content="How do you want to pimp the sentence? \n what do you want to communicate with it?" HorizontalAlignment="Left" Height="49" Margin="103,234,0,0" VerticalAlignment="Top" Width="477"/>
+        <ComboBox Name="ComboImprovement" SelectionChanged="Improvement_SelectionChanged" HorizontalAlignment="Left" Margin="107,304,0,0" VerticalAlignment="Top" Width="194"/>
+        <Label Foreground="#0E7B8C" Content="Technique:" HorizontalAlignment="Left" Height="29" Margin="103,331,0,0" VerticalAlignment="Top" Width="198"/>
+        <ComboBox Name="ComboTechnique" SelectionChanged="Technique_SelectionChanged" HorizontalAlignment="Left" Margin="107,366,0,0" VerticalAlignment="Top" Width="194"/>
+        <Label Foreground="#0E7B8C" Content="Description:" HorizontalAlignment="Left" Height="30" Margin="103,0,0,0" VerticalAlignment="Center" Width="198"/>
+        <TextBox Name="descriptionTxt" HorizontalAlignment="Left" Height="200" Margin="103,427,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="282"/>
+        <TextBox Name="FeedbackTxt" HorizontalAlignment="Left" Margin="569,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
+
+        <MediaElement Name="myVideo" LoadedBehavior="Manual" UnloadedBehavior="Manual" HorizontalAlignment="Right" Height="278" Margin="0,333,90,0" VerticalAlignment="Top" Width="331"/>
+        <Button Name="Play" MouseEnter="Play_MouseEnter" MouseLeave="Play_MouseLeave" BorderThickness="0" Background="Transparent" FontSize="15" HorizontalAlignment="Left" Margin="586,0,0,100" VerticalAlignment="Bottom" Click="Play_Click" Height="50" Width="57" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -42,7 +49,7 @@
             </Button.Style>
             <Image Name="btnPlay" Source="Images/btn_Play.png" />
         </Button>
-        <Button Name="Stop" BorderThickness="0" Background="Transparent" MouseEnter="Stop_MouseEnter" MouseLeave="Stop_MouseLeave" FontSize="15" HorizontalAlignment="Left" Margin="679,0,0,42" VerticalAlignment="Bottom" Click="Stop_Click" Height="50" Width="57" >
+        <Button Name="Stop" BorderThickness="0" Background="Transparent" MouseEnter="Stop_MouseEnter" MouseLeave="Stop_MouseLeave" FontSize="15" HorizontalAlignment="Left" Margin="679,0,0,100" VerticalAlignment="Bottom" Click="Stop_Click" Height="50" Width="57" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -65,7 +72,7 @@
             <Image Name="btnStop" Source="Images/btn_Stop.png" />
         </Button>
 
-        <Button Name="buttonPrevious"  MouseEnter="buttonPrevious_MouseEnter" MouseLeave="buttonPrevious_MouseLeave" HorizontalAlignment="Left" Margin="47,44,0,0" VerticalAlignment="Top" Height="36" Click="buttonPrevious_Click">
+        <Button Name="buttonPrevious"  MouseEnter="buttonPrevious_MouseEnter" MouseLeave="buttonPrevious_MouseLeave" HorizontalAlignment="Left" Margin="80,140,0,0" VerticalAlignment="Top" Height="36" Click="buttonPrevious_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -87,7 +94,7 @@
             </Button.Style>
             <Image Name="prevButtonImg" Source="Images/btn_back.png" />
         </Button>
-        <Button Name="buttonNext"  HorizontalAlignment="Left" Margin="400,44,0,0" VerticalAlignment="Top" Height="35" MouseEnter="buttonNext_MouseEnter" MouseLeave="buttonNext_MouseLeave" Click="buttonNext_Click">
+        <Button Name="buttonNext"  HorizontalAlignment="Left" Margin="435,140,0,0" VerticalAlignment="Top" Height="35" MouseEnter="buttonNext_MouseEnter" MouseLeave="buttonNext_MouseLeave" Click="buttonNext_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -133,7 +140,7 @@
             <Image Name="AddButtonImg" Source="Images/btn_add.png" />
         </Button>
 
-        <Button Name="Return" BorderThickness="0" Background="Transparent" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave" FontSize="15" HorizontalAlignment="Left" Margin="69,0,0,42" VerticalAlignment="Bottom" Click="Return_Click" Height="50" Width="57" >
+        <Button Name="Return" BorderThickness="0" Background="Transparent" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave" FontSize="15" HorizontalAlignment="Left" Margin="80,0,0,102" VerticalAlignment="Bottom" Click="Return_Click" Height="50" Width="57" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -156,6 +163,7 @@
             <Image Name="ReturnImg" Source="Images/btn_return.png" />
         </Button>
         <Button Content="Button" Visibility="Collapsed" HorizontalAlignment="Left" Height="25" Margin="791,533,0,0" VerticalAlignment="Top" Click="Button_Click" Width="42"/>
+
 
     </Grid>
 </UserControl>

@@ -21,6 +21,7 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using System.Drawing;
 using System.Net.Sockets;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PTVision
 {
@@ -154,7 +155,10 @@ namespace PTVision
             Globals.SourceWidth = 854;
             Globals.SourceHeight = 480;
 
-            Globals.SourceLeft = (int)myImage.Margin.Left + (int)(this.Margin.Left + (System.Windows.SystemParameters.PrimaryScreenWidth - this.Width) / 2);
+            int leftDisplacement = (int)((this.Width - myImage.Width) / 2);
+
+           // Globals.SourceLeft = (int)myImage.Margin.Left + (int)(this.Margin.Left + (System.Windows.SystemParameters.PrimaryScreenWidth - this.Width) / 2);
+            Globals.SourceLeft = leftDisplacement + (int)(this.Margin.Left + (System.Windows.SystemParameters.PrimaryScreenWidth - this.Width) / 2);
             Globals.SourceTop = (int)myImage.Margin.Top + (int)(this.Margin.Top + (System.Windows.SystemParameters.PrimaryScreenHeight - this.Height) / 2); ;
 
 
@@ -186,7 +190,7 @@ namespace PTVision
                 if (autoVissible == true)
                 {
                     FeedbackLabel.Visibility = Visibility.Visible;
-                    FeedbackLabel.Content = x.message;
+                    FeedbackLabel.FeedbackLabel.Content = x.message;
                 }
 
             }));
@@ -197,40 +201,44 @@ namespace PTVision
         #region FeedbacksForScript
 
         void loadFeedbacks()
-        {
-            string path = System.IO.Path.Combine(Globals.usersPathLogs + "\\Feedbacks.json");
-            if (!File.Exists(path))
+        {   
+            if(Globals.usersPathLogs !="")
             {
-                FileStream fs = File.Create(path);
-                fs.Close();
-                feedbackSentences = new FeedbacksSentences();
-
-                foreach (IdentifiedSentence sentence in Globals.practiceSession.sentences)
+                string path = System.IO.Path.Combine(Globals.usersPathLogs + "\\Feedbacks.json");
+                if (!File.Exists(path))
                 {
-                    FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
-                    feedbackSentences.feedbacks.Add(f4s);
-                }
-
-                string myString = Newtonsoft.Json.JsonConvert.SerializeObject(feedbackSentences);
-                File.WriteAllText(path, myString);
-
-            }
-            else
-            {
-                string jsonOne = File.ReadAllText(path);
-                feedbackSentences = JsonConvert.DeserializeObject<FeedbacksSentences>(jsonOne);
-                if (feedbackSentences == null)
-                {
+                    FileStream fs = File.Create(path);
+                    fs.Close();
                     feedbackSentences = new FeedbacksSentences();
+
                     foreach (IdentifiedSentence sentence in Globals.practiceSession.sentences)
                     {
                         FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
                         feedbackSentences.feedbacks.Add(f4s);
                     }
+
+                    string myString = Newtonsoft.Json.JsonConvert.SerializeObject(feedbackSentences);
+                    File.WriteAllText(path, myString);
+
                 }
+                else
+                {
+                    string jsonOne = File.ReadAllText(path);
+                    feedbackSentences = JsonConvert.DeserializeObject<FeedbacksSentences>(jsonOne);
+                    if (feedbackSentences == null)
+                    {
+                        feedbackSentences = new FeedbacksSentences();
+                        foreach (IdentifiedSentence sentence in Globals.practiceSession.sentences)
+                        {
+                            FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
+                            feedbackSentences.feedbacks.Add(f4s);
+                        }
+                    }
 
 
+                }
             }
+           
             readyForManualFeedback = true;
         }
 
@@ -238,13 +246,14 @@ namespace PTVision
         {
             if (readyForManualFeedback == true)
             {
+                bool noFeedback = true;
                 // ManualFeedback.Visibility = Visibility.Visible;
                 foreach (FeedbackForSentences f4s in feedbackSentences.feedbacks)
                 {
                     if (f4s.sentence == ScriptLabel.Content.ToString())
                     {
 
-                        ManualFeedback.Content = f4s.feedbackKeywords;
+                        ManualFeedback.FeedbackLabel.Content = f4s.feedbackKeywords;
 
                         if (f4s.feedbackKeywords == "" || f4s.feedbackKeywords == " ")
                         {
@@ -253,9 +262,14 @@ namespace PTVision
                         else
                         {
                             ManualFeedback.Visibility = Visibility.Visible;
+                            noFeedback = false;
                         }
                     }
 
+                }
+                if(noFeedback)
+                {
+                    ManualFeedback.Visibility = Visibility.Collapsed;
                 }
 
             }
@@ -661,33 +675,37 @@ namespace PTVision
         private void finishLoggingStuff()
         {
             // saveToJSON();
-            Globals.practiceSession.end = DateTime.Now;
-            string path = System.IO.Path.Combine(Globals.usersPathLogs + "\\PracticeSession.json");
-            if (!File.Exists(path))
+            if(Globals.usersPathLogs !="")
             {
-                FileStream fs = File.Create(path);
-                fs.Close();
-                PracticeSessions sessions = new PracticeSessions();
-
-                sessions.sessions.Add(Globals.practiceSession);
-                string myString = Newtonsoft.Json.JsonConvert.SerializeObject(sessions);
-                File.WriteAllText(path, myString);
-
-            }
-            else
-            {
-                string jsonOne = File.ReadAllText(path);
-                PracticeSessions sessions = JsonConvert.DeserializeObject<PracticeSessions>(jsonOne);
-                if (sessions == null)
+                Globals.practiceSession.end = DateTime.Now;
+                string path = System.IO.Path.Combine(Globals.usersPathLogs + "\\PracticeSession.json");
+                if (!File.Exists(path))
                 {
-                    sessions = new PracticeSessions();
+                    FileStream fs = File.Create(path);
+                    fs.Close();
+                    PracticeSessions sessions = new PracticeSessions();
+
+                    sessions.sessions.Add(Globals.practiceSession);
+                    string myString = Newtonsoft.Json.JsonConvert.SerializeObject(sessions);
+                    File.WriteAllText(path, myString);
+
                 }
-                sessions.sessions.Add(Globals.practiceSession);
-                string myString = Newtonsoft.Json.JsonConvert.SerializeObject(sessions);
-                File.WriteAllText(path, myString);
+                else
+                {
+                    string jsonOne = File.ReadAllText(path);
+                    PracticeSessions sessions = JsonConvert.DeserializeObject<PracticeSessions>(jsonOne);
+                    if (sessions == null)
+                    {
+                        sessions = new PracticeSessions();
+                    }
+                    sessions.sessions.Add(Globals.practiceSession);
+                    string myString = Newtonsoft.Json.JsonConvert.SerializeObject(sessions);
+                    File.WriteAllText(path, myString);
+                }
+                recordingClass.stopRecording();
+                recordingClass.combineFiles();
             }
-            recordingClass.stopRecording();
-            recordingClass.combineFiles();
+            
         }
 
 

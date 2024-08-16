@@ -5,25 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PTVision"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Height="600" Width="800">
+             d:DesignHeight="800" d:DesignWidth="1000">
+    <Grid  Height="800" Width="1000">
         <Image Source="Images/container3.png" Stretch="Fill" Margin="0,0,0,0" />
-        <StackPanel Margin="40,70,0,0" Orientation="Horizontal" >
-            <Label Name="levelLabel" Content="Current Level" Foreground="White" Margin="5,0,0,0"/>
-            <RadioButton Name="radioLevel1" GroupName="levelGroupName" Checked="RadioButton_Checked" IsChecked="True" Foreground="White" Margin="5">1</RadioButton>
-            <RadioButton Name="radioLevel2" GroupName="levelGroupName" Checked="RadioButton_Checked" Foreground="White" Margin="5">2</RadioButton>
-            <RadioButton Name="radioLevel3" GroupName="levelGroupName" Checked="RadioButton_Checked" Foreground="White" Margin="5" >3</RadioButton>
-            <RadioButton Name="radioLevel4" GroupName="levelGroupName" Checked="RadioButton_Checked" Foreground="White" Margin="5" >4</RadioButton>
+        <StackPanel Margin="80,80,0,0" Orientation="Horizontal" >
+            <Label Name="levelLabel" Content="Current Level" Foreground="#0E7B8C" Margin="5,0,0,0"/>
+            <RadioButton Name="radioLevel1" GroupName="levelGroupName" Checked="RadioButton_Checked" IsChecked="True" Foreground="#0E7B8C" Margin="5">1</RadioButton>
+            <RadioButton Name="radioLevel2" GroupName="levelGroupName" Checked="RadioButton_Checked" Foreground="#0E7B8C" Margin="5">2</RadioButton>
+            <RadioButton Name="radioLevel3" GroupName="levelGroupName" Checked="RadioButton_Checked" Foreground="#0E7B8C" Margin="5" >3</RadioButton>
+            <RadioButton Name="radioLevel4" GroupName="levelGroupName" Checked="RadioButton_Checked" Foreground="#0E7B8C" Margin="5" >4</RadioButton>
 
         </StackPanel>
-        <Label Visibility="Collapsed" Name="countdownLabel" Content="10" FontSize="30" Foreground="White" Margin="0,100,50,0" HorizontalAlignment="Right"/>
-        <TextBlock Name="gameTextBlock" FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Background="LightGray" Text="" VerticalAlignment="Top" Height="51" Width="600"
-                   ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="108,97,0,0" />
-        <ScrollViewer VerticalAlignment="Top" Height="258" Width="400"  Margin="50,190,0,0" HorizontalAlignment="Left">
-            <TextBlock Name="resultTextBlock" FontSize="20" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="" Background="WhiteSmoke" Width="400" />
+        <Label Visibility="Collapsed" Name="countdownLabel" Content="10" FontSize="30" Foreground="#0E7B8C" Margin="40,130,100,0" HorizontalAlignment="Right"/>
+        <TextBlock Name="gameTextBlock" FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Background="White" Text="" VerticalAlignment="Top" Height="51" Width="600"
+                   ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="147,130,0,0" />
+        <ScrollViewer VerticalAlignment="Top" Height="200" Width="600"  Margin="145,200,0,0" HorizontalAlignment="Left">
+            <TextBlock Name="resultTextBlock" FontSize="20" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="" Background="White" Width="600" />
         </ScrollViewer>
 
-        <Button Name="Button_Start" MouseEnter="Button_Start_MouseEnter" MouseLeave="Button_Start_MouseLeave" BorderThickness="0" Background="Transparent" FontSize="20" HorizontalAlignment="Right" Margin="0,70,70,0" VerticalAlignment="Top" Click="Button_Start_Click" Height="50" Width="50" RenderTransformOrigin="-0.647,0.288">
+        <Button Name="Button_Start" MouseEnter="Button_Start_MouseEnter" MouseLeave="Button_Start_MouseLeave" BorderThickness="0" Background="Transparent" FontSize="20" HorizontalAlignment="Right" Margin="0,80,100,0" VerticalAlignment="Top" Click="Button_Start_Click" Height="50" Width="50" RenderTransformOrigin="-0.647,0.288">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -45,7 +45,7 @@
             </Button.Style>
             <Image Name="Button_StartImg" Source="Images/btn_start.png" />
         </Button>
-        <Button Name="Return" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave" BorderThickness="0" Background="Transparent" FontSize="15" HorizontalAlignment="Left" Margin="60,0,0,30" VerticalAlignment="Bottom" Click="Return_Click" Height="50" Width="57" >
+        <Button Name="Return" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave" BorderThickness="0" Background="Transparent" FontSize="15" HorizontalAlignment="Left" Margin="80,0,0,80" VerticalAlignment="Bottom" Click="Return_Click" Height="50" Width="57" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -69,6 +69,6 @@
         </Button>
         <Image Name="correctImage" Visibility="Collapsed" HorizontalAlignment="Left" Height="107" Margin="326,97,0,0" VerticalAlignment="Top" Width="138" Source="/correct.png"/>
         <Image  Name="incorrectImage" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" Margin="341,112,0,0" VerticalAlignment="Top" Width="100" Source="/wrong.png"/>
-        <Image Name="SlideImage" HorizontalAlignment="Left" Height="125" Margin="522,196,0,0" VerticalAlignment="Top" Width="188"/>
+        <Image Name="SlideImage" HorizontalAlignment="Left" Height="198" Margin="328,442,0,0" VerticalAlignment="Top" Width="350"/>
     </Grid>
 </UserControl>

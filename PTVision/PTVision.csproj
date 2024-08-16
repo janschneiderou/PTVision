@@ -499,6 +499,9 @@
     <None Update="HelpExes\mediaP\mediaP.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Images\arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Images\btn_after.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

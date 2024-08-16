@@ -305,7 +305,7 @@ namespace PTVision
              //   Grid_for_Mode_Selection.Visibility = Visibility.Visible;
                 
                 UserManagementButton.IsEnabled = true;
-                locateTutor();
+                //locateTutor();
                 initSpeech();
             }));
         }

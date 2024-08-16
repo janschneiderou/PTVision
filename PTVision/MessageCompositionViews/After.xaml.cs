@@ -149,7 +149,7 @@ namespace PTVision.MessageCompositionViews
             }
             if (currentDialgog == 2)
             {
-                if (Globals.audienceAfter.Count > 0)
+                if (Globals.MessageStructure.audienceAfter.Count > 0)
                 {
                     doneEvent(this, "");
                 }

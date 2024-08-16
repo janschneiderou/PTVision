@@ -157,7 +157,7 @@ namespace PTVision.MessageCompositionViews
             }
             if(currentDialgog == 2)
             {
-                if(Globals.audiencePrevious.Count > 0) 
+                if(Globals.MessageStructure.audiencePrevious.Count > 0) 
                 {
                     doneEvent(this, "");
                 }
