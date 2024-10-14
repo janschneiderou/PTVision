@@ -1,6 +1,9 @@
-﻿using System;
+﻿using PTVision.LogObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Label = System.Windows.Controls.Label;
 
 namespace PTVision.MessageCompositionViews
 {
@@ -24,9 +28,11 @@ namespace PTVision.MessageCompositionViews
         double marginBetween = 10;
         int dialogs = 8;
         int inputs = 2;
-        Label[] textDialogs;
+        System.Windows.Controls.Label[] textDialogs;
         Image[] SpeechBubbles;
         TextBox[] textInputs;
+        bool seen = true;
+        bool flag1 = false;
 
         List <string> selections = new List <string>();
         //List<Image> selectionBubbles = new List<Image>();
@@ -55,10 +61,14 @@ namespace PTVision.MessageCompositionViews
 
             textInputs = new TextBox[inputs];
             SpeechBubbles = new Image[dialogs];
-            textDialogs = new Label[dialogs];
+            textDialogs = new System.Windows.Controls.Label[dialogs];
             speechBubble.Visibility = Visibility.Visible;
             currentTop = Canvas.GetTop(parrotImg);
             inputDisplacement = parrotImg.Height;
+            if(Globals.MessageStructure.introductionStarters.Count > 0) 
+            {
+                seen = false;
+            }
             initSpeechBubbles();
             currentDialgog++;
         }
@@ -178,7 +188,7 @@ namespace PTVision.MessageCompositionViews
 
         private void next_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (currentDialgog < dialogs)
+            if (currentDialgog < 7)
             {
                 explanationDialogs();
                 if (currentDialgog == 3) 
@@ -188,7 +198,7 @@ namespace PTVision.MessageCompositionViews
                 }
 
             }
-            if(currentDialgog==7)
+           else if(currentDialgog==7)
             {
                 currentTop = currentTop + marginBetween;
                 starters = new CompositionSelections();
@@ -196,6 +206,7 @@ namespace PTVision.MessageCompositionViews
                 starters.addEvent += Starters_addEvent;
                 starters.deleteEvent += Starters_deleteEvent;
                 dialogCanvas.Children.Add(starters);
+                totalSelections= Globals.MessageStructure.introductionStarters.Count;
                 Canvas.SetTop(starters, currentTop);
                 Canvas.SetLeft(starters, 40);
                 inputDisplacement = starters.Height;
@@ -206,7 +217,7 @@ namespace PTVision.MessageCompositionViews
                 
                 currentDialgog++;
             }
-            if (currentDialgog >= 8)
+            else if (currentDialgog >= 8)
             {
                 doInputsForIntroIdeas();
             }
@@ -235,10 +246,34 @@ namespace PTVision.MessageCompositionViews
             currentDialgog++;
         }
 
+        void lookForSelection()
+        {
+            
+            foreach (IntroductionStarters introS in Globals.MessageStructure.introductionStarters)
+            {
+
+                string x = "";
+                switch (introS.starter) 
+                {
+                    case Globals.StarterType.STORY:
+                        x = "Tell as story";
+                        break;
+                    case Globals.StarterType.FACT:
+                        x = "Tell an impresive fact";
+                        break;
+                    case Globals.StarterType.QUESTION:
+                        x = "Ask a question";
+                        break;
+                }
+                selections.Add(x);
+               
+            }
+        }
         void doInputsForIntroIdeas()
         {
-            if (Globals.MessageStructure.introductionStarters.Count > 0)
+            if (Globals.MessageStructure.introductionStarters.Count > 0 )
             {
+               
                 if (currentSelection != totalSelections && noPointersSelected==true)
                 {
                     double parrotTop = Canvas.GetTop(parrotImg);
@@ -252,6 +287,8 @@ namespace PTVision.MessageCompositionViews
                     }
                     Canvas.SetTop(parrotImg, currentTop);
 
+                    lookForSelection();
+
                     initSelectionBubbles();
                     myScroll.ScrollToBottom();
                     inputDisplacement = parrotImg.Height;
@@ -259,7 +296,7 @@ namespace PTVision.MessageCompositionViews
                     addPointers();
                     noPointersSelected = false;
                 }
-                if(noPointersSelected==false)
+                if(noPointersSelected==false && flag1==false)
                 {
                     if(Globals.MessageStructure.introductionStarters.ElementAt(currentSelection).pointers.Count>0)
                     {
@@ -267,9 +304,14 @@ namespace PTVision.MessageCompositionViews
                         noPointersSelected=true;
                     }
                 }
-                if(totalSelections==currentSelection)
+                if(totalSelections==currentSelection && seen == true)
                 {
                     doneEvent(this, "");
+                }
+                else 
+                {
+                    seen = true;
+                    flag1 = true;
                 }
               
                

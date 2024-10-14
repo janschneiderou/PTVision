@@ -153,6 +153,7 @@ namespace PTVision.MessageCompositionViews
         {
             TopicText.Visibility = Visibility.Visible;
             TopicLabel.Visibility = Visibility.Visible;
+            TopicText.Text = Globals.MessageStructure.presentationTopic ;
         }
 
 

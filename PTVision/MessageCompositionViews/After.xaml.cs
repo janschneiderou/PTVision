@@ -113,7 +113,7 @@ namespace PTVision.MessageCompositionViews
 
         private void next_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (currentDialgog < dialogs)
+            if (currentDialgog == 0)
             {
                 double parrotTop = Canvas.GetTop(parrotImg);
 
@@ -132,7 +132,7 @@ namespace PTVision.MessageCompositionViews
 
 
             }
-            if (currentDialgog == 1)
+            else if (currentDialgog == 1)
             {
                 currentTop = currentTop + marginBetween;
                 currentKnowledge = new CompositionInputs();
@@ -147,7 +147,7 @@ namespace PTVision.MessageCompositionViews
                 myScroll.ScrollToBottom();
                 currentDialgog++;
             }
-            if (currentDialgog == 2)
+            else if (currentDialgog == 2)
             {
                 if (Globals.MessageStructure.audienceAfter.Count > 0)
                 {

@@ -1,6 +1,7 @@
 ﻿using PTVision.LogObjects;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -46,7 +47,30 @@ namespace PTVision.MessageCompositionViews
                     }
                     break;
                 case Globals.CompositionInfo.AUDIENCE_AFTER:
+                    foreach (string s in Globals.MessageStructure.audienceAfter)
+                    {
+                        listBoxContent.Items.Add(s);
+                    }
                     break;
+                case Globals.CompositionInfo.CONCLUSION_BRACKETS:
+                    foreach (string s in Globals.MessageStructure.conclusionLogs.openBrackets)
+                    {
+                        listBoxContent.Items.Add(s);
+                    }
+                    break;
+                case Globals.CompositionInfo.CONCLUSION_FINAL:
+                    foreach (string s in Globals.MessageStructure.conclusionLogs.finalMessage)
+                    {
+                        listBoxContent.Items.Add(s);
+                    }
+                    break;
+                case Globals.CompositionInfo.MIDDLE:
+                    foreach(string s in Globals.MessageStructure.middleStatements)
+                    {
+                        listBoxContent.Items.Add(s);
+                    }
+                    break;
+             
             }
 
             
@@ -56,7 +80,10 @@ namespace PTVision.MessageCompositionViews
         {
             this.intros = intros;
             info = Globals.CompositionInfo.INTRODUCTION;
-          
+            foreach(string s in intros.pointers)
+            {
+                listBoxContent.Items.Add(s);
+            }
 
 
         }

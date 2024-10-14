@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PTVision"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1000">
-    <Grid x:Name="mainGrid" Width="1000" Height="800" >
+             d:DesignHeight="800" d:DesignWidth="1100">
+    <Grid x:Name="mainGrid" Width="1100" Height="800" >
         <Image Name="imgFrame" Source="Images/container3.png" Stretch="Fill" />
 
         <Button Name="Before_btn" Click="Before_btn_Click" MouseEnter="Before_btn_MouseEnter"  MouseLeave="Before_btn_MouseLeave" HorizontalAlignment="Left" Margin="115,59,0,0" VerticalAlignment="Top" Height="44" Width="69">
@@ -67,7 +67,7 @@
         </Button>
 
 
-        <Button Name="Middle_btn" Click="Middle_btn_Click"  HorizontalAlignment="Center" Margin="0,59,0,0" MouseEnter="Middle_btn_MouseEnter" MouseLeave="Middle_btn_MouseLeave" VerticalAlignment="Top" Height="44" Width="68" >
+        <Button Name="Middle_btn" Click="Middle_btn_Click"  HorizontalAlignment="Center" Margin="-140,59,0,0" MouseEnter="Middle_btn_MouseEnter" MouseLeave="Middle_btn_MouseLeave" VerticalAlignment="Top" Height="44" Width="68" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
