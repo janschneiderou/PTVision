@@ -27,7 +27,7 @@ namespace PTVision
         public delegate void ExitEvent(object sender, string x);
         public event ExitEvent exitEvent;
 
-        int MaxCharacters = 40;
+        int MaxCharacters = 100;
         string path;
         List<string> slides;
         int currentSlide = 0;

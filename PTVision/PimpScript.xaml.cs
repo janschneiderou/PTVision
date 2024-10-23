@@ -183,16 +183,28 @@ namespace PTVision
             }
             else
             {
+                
                 string jsonOne = File.ReadAllText(path);
                 feedbackSentences = JsonConvert.DeserializeObject<FeedbacksSentences>(jsonOne);
-                if (feedbackSentences == null)
+                if (feedbackSentences == null || feedbackSentences.feedbacks.Count==0)
                 {
                     feedbackSentences = new FeedbacksSentences();
-                    foreach (IdentifiedSentence sentence in Globals.practiceSession.sentences)
+
+                    foreach(Word w in Globals.words)
                     {
-                        FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
+                        FeedbackForSentences f4s = new FeedbackForSentences("", "", "", w.Text);
                         feedbackSentences.feedbacks.Add(f4s);
                     }
+
+                    //if (Globals.practiceSession != null)
+                    //{
+                    //    foreach (IdentifiedSentence sentence in Globals.practiceSession.sentences)
+                    //    {
+                    //        FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
+                    //        feedbackSentences.feedbacks.Add(f4s);
+                    //    }
+                    //}
+
                 }
 
 

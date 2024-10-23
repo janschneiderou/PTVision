@@ -17,13 +17,13 @@
                 <Label Content="Exercises" Canvas.Left="20" Canvas.Top="5" FontWeight="Bold" Foreground="#0E7B8C"/>
 
 
+                <!-- 
                 <CheckBox Content="Stretch and relax" Name="CB_Stretch_Relax" Canvas.Left="30" Canvas.Top="55" Unchecked="CB_Stretch_Relax_Unchecked" Checked="CB_Stretch_Relax_Checked" Foreground="#0E7B8C"/>
                 <CheckBox Content="Lips one" Name="CB_Lips_Ba" Canvas.Left="30" Canvas.Top="85" Unchecked="CB_Lips_Ba_Unchecked" Checked="CB_Lips_Ba_Checked" Foreground="#0E7B8C"/>
-
                 <CheckBox Content="Tongue one" Name="CB_Tongue_La" Canvas.Left="30" Canvas.Top="115" Unchecked="CB_Tongue_La_Unchecked" Checked="CB_Tongue_La_Checked" Foreground="#0E7B8C"/>
-
                 <CheckBox Content="High and low" Name="CB_We_Ah" Canvas.Left="30" Canvas.Top="145" Unchecked="CB_We_Ah_Unchecked" Checked="CB_We_Ah_Checked" Foreground="#0E7B8C"/>
-
+                 
+                -->
 
                 <Label Name="CounterLabel" Background="White" Content="0" Foreground="#0E7B8C" FontSize="34" HorizontalAlignment="Center" Margin="60,250,0,0" VerticalAlignment="Top"/>
 
@@ -59,8 +59,9 @@
             </Button.ToolTip>
             <Image Name="ReturnImg" Source="Images/btn_return.png" />
         </Button>
-
-        <local:FeedbackObject x:Name="InstructionLabel"  HorizontalAlignment="Left" Margin="50,550,0,0"  Height="100" Width="900" VerticalAlignment="Top"/>
+        <Viewbox  HorizontalAlignment="Left" Margin="50,550,0,0"  Height="100" Width="900" VerticalAlignment="Top">
+            <local:FeedbackObject x:Name="InstructionLabel" />
+        </Viewbox>
 
     </Grid>
 </UserControl>

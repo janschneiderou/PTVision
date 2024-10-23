@@ -33,9 +33,12 @@
             <Image Name="Button_Pause_PlayImg" Source="Images/btn_pause_play.png" />
         </Button>
         <Label Name="DebugLabel" Content="Label" HorizontalAlignment="Left" Margin="201,707,0,0" VerticalAlignment="Top" Height="83" Width="215"/>
-        <local:FeedbackObject x:Name="FeedbackLabel"  Visibility="Collapsed"   Height="100" Width="450" Margin="0,50,0,0"  VerticalAlignment="Center" HorizontalContentAlignment="Center" />
-        <local:FeedbackObject x:Name="ManualFeedback"  Visibility="Collapsed"   Height="100" Width="450"  Margin="0,0,0,80"  VerticalAlignment="Center" HorizontalContentAlignment="Center" />
-
+        <Viewbox Height="100" Width="450" Margin="0,50,0,0"  VerticalAlignment="Center" HorizontalAlignment="Center"> 
+            <local:FeedbackObject x:Name="FeedbackLabel"  Visibility="Collapsed"     HorizontalContentAlignment="Center" />
+        </Viewbox >
+        <Viewbox Height="100" Width="450"  Margin="0,0,0,80"  VerticalAlignment="Center" HorizontalAlignment="Center" > 
+            <local:FeedbackObject x:Name="ManualFeedback"  Visibility="Collapsed"    HorizontalContentAlignment="Center" />
+        </Viewbox>
         <Canvas x:Name="scrptCanvas" Background="Transparent" Visibility="Visible" Height="80"  Width="750"  HorizontalAlignment="Center" Margin="0,0,0,160" VerticalAlignment="Bottom">
             <Button Canvas.Left="0" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave" Background="Transparent" Name="buttonBack" Height="50"  Click="buttonBack_Click" Visibility="Collapsed">
                 <Button.Style>
@@ -81,8 +84,9 @@
                 </Button.Style>
                 <Image Name="buttonNextImg" Source="Images/btn_next.png" />
             </Button>
-
-            <Label Name="ScriptLabel" Canvas.Left="65" Visibility="Collapsed" Content="" Width="620" Background="Transparent"  Foreground="Blue" Height="80" FontSize="20"  />
+            <Viewbox Canvas.Left="65" Width="620" Height="80">
+                <Label Name="ScriptLabel"  Visibility="Collapsed" Content="" Width="620" Background="Transparent"  Foreground="Blue" Height="80" FontSize="20"  />
+            </Viewbox>
             <Button Canvas.Left="305" Canvas.Top="40" MouseEnter="buttonSpeak_MouseEnter" MouseLeave="buttonSpeak_MouseLeave" Background="Transparent" Name="buttonSpeak"  Visibility="Collapsed" Click="buttonSpeak_Click">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">

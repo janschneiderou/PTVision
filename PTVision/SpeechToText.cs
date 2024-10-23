@@ -239,7 +239,7 @@ namespace PTVision
 
                 if (File.Exists(Globals.vocal_exercise_Path) == false)
                 {
-                    File.WriteAllText(Globals.vocal_exercise_Path, "ahhh \n Ba \n Br \n La \n Rr \n Weao \n Oawe");
+                    File.WriteAllText(Globals.vocal_exercise_Path, "ahhh \n Bababebebibibobobubu \n Mamemomumi \n Lalelilolu \n sulsolsilselsal \n Windows \n Monkey");
                 }
 
                 string[] lines = File.ReadAllLines(Globals.vocal_exercise_Path);

@@ -30,8 +30,8 @@ namespace PTVision
     /// </summary>
     public partial class VocalExercises : UserControl
     {
-        int totalExercises = 8;
-        int currentCount = 9;
+        int totalExercises = 3;
+        int currentCount = 3;
 
         bool wordIdentified=false;
 
@@ -233,7 +233,7 @@ namespace PTVision
                     doRaiseArmsAnalysis(body);
                     if(currentCount == 0)
                     {
-                        currentCount = 9;
+                        currentCount = 3;
                         saveToFile();
                         currentExercise = currentCase.LIPS_ONE;
                         
@@ -243,7 +243,7 @@ namespace PTVision
                     doVocalAnalysis(1);
                     if (currentCount == 0)
                     {
-                        currentCount = 9;
+                        currentCount = 3;
                         saveToFile();
                         currentExercise = currentCase.TONGUE_ONE;
                         
@@ -253,7 +253,7 @@ namespace PTVision
                     doVocalAnalysis(2);
                     if (currentCount == 0)
                     {
-                        currentCount = 9;
+                        currentCount = 3;
                         saveToFile();
                         currentExercise = currentCase.TONGUE_ONE;
                         
@@ -263,7 +263,7 @@ namespace PTVision
                     doVocalAnalysis(3);
                     if (currentCount == 0)
                     {
-                        currentCount = 9;
+                        currentCount = 3;
                         saveToFile();
                         currentExercise = currentCase.TONGUE_TWO;
                         
@@ -273,7 +273,7 @@ namespace PTVision
                     doVocalAnalysis(4);
                     if (currentCount == 0)
                     {
-                        currentCount = 9;
+                        currentCount = 3;
                         saveToFile();
                         currentExercise = currentCase.WE_AH;
                         
@@ -386,7 +386,7 @@ namespace PTVision
                     }
                     break;
                 case currentCase.LIPS_ONE:
-                    if( text == Globals.words[1].Text)
+                    if( text == Globals.words[1].Text || text == Globals.words[3].Text)
                     {
                         wordIdentified = true; 
                     }

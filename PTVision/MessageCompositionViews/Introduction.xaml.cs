@@ -292,11 +292,14 @@ namespace PTVision.MessageCompositionViews
                     initSelectionBubbles();
                     myScroll.ScrollToBottom();
                     inputDisplacement = parrotImg.Height;
-
-                    addPointers();
+                    if (flag1 == false)
+                    {
+                        addPointers();
+                    }
+                   
                     noPointersSelected = false;
                 }
-                if(noPointersSelected==false && flag1==false)
+                if(noPointersSelected==false )// && flag1==false)
                 {
                     if(Globals.MessageStructure.introductionStarters.ElementAt(currentSelection).pointers.Count>0)
                     {
@@ -327,6 +330,7 @@ namespace PTVision.MessageCompositionViews
         {
             currentTop = currentTop + marginBetween;
             CompositionInputs pointers = new CompositionInputs();
+           
             pointers.initItems(Globals.MessageStructure.introductionStarters.ElementAt(currentSelection));
 
             dialogCanvas.Children.Add(pointers);

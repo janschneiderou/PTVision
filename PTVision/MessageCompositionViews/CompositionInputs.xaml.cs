@@ -101,12 +101,16 @@ namespace PTVision.MessageCompositionViews
                     Globals.MessageStructure.audienceAfter.Add(inputText.Text);
                     break;
                 case Globals.CompositionInfo.INTRODUCTION:
-                    foreach(IntroductionStarters intro in Globals.MessageStructure.introductionStarters)
+                    int i = 0;
+                    foreach (IntroductionStarters intro in Globals.MessageStructure.introductionStarters)
                     {
+                        
                         if(intro.starter == intros.starter)
                         {
-                            intro.pointers.Add(inputText.Text);
+                            //intro.pointers.Add(inputText.Text);
+                            Globals.MessageStructure.introductionStarters[i].pointers.Add(inputText.Text);
                         }
+                        i++;
                     }
                     break;
                 case Globals.CompositionInfo.CONCLUSION_BRACKETS:
