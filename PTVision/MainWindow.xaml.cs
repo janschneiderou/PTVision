@@ -34,12 +34,12 @@ namespace PTVision
         {
             InitializeComponent();
             this.WindowState = System.Windows.WindowState.Maximized;
-            initHelpServers();
+           // initHelpServers();  //uncomment if you want to use mediapipe
             welcomePage = new WelcomePage();
             welcomePage2 = new WelcomePage2();
             //MainGrid.Children.Add(welcomePage);
             MainGrid.Children.Add(welcomePage2);
-            Task taskA = Task.Run(() => initSocket());
+          //  Task taskA = Task.Run(() => initSocket()); //uncomment if you want to use mediapipe
             
             
         }

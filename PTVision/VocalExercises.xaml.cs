@@ -2,6 +2,7 @@
 using AForge.Video.DirectShow;
 using Newtonsoft.Json;
 using PTVision.LogObjects;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,6 +22,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using YoloDotNet;
+using YoloDotNet.Enums;
+using YoloDotNet.Models;
 using Brushes = System.Windows.Media.Brushes;
 
 namespace PTVision
@@ -30,6 +34,12 @@ namespace PTVision
     /// </summary>
     public partial class VocalExercises : UserControl
     {
+        Yolo yolo;
+        bool modelLoaded = false;
+        bool usingYOLO = true;
+        PoseEstimation yoloBody;
+
+
         int totalExercises = 3;
         int currentCount = 3;
 
@@ -62,6 +72,8 @@ namespace PTVision
 
         PoseAnalysisMedia analysisMedia;
 
+        PoseAnalysisYOLO analysisYOLO;
+
         #region Camera
         VideoCaptureDevice videoSource;
         #endregion
@@ -83,6 +95,12 @@ namespace PTVision
             InstructionLabel.FeedbackLabel.Width = 700;
             InstructionLabel.FeedbackLabel.Background = Brushes.Transparent;
              initWebcam();
+            if(usingYOLO==true)
+            {
+                analysisYOLO = new PoseAnalysisYOLO();
+                configureYolo();
+            }
+            
         }
 
 
@@ -119,6 +137,27 @@ namespace PTVision
 
         #endregion
 
+
+        #region initYOLO
+
+        void configureYolo()
+        {
+            string executingDirectory = Directory.GetCurrentDirectory();
+            var model = executingDirectory + "\\Models\\yolov11s-pose.onnx";
+
+
+            yolo = new Yolo(new YoloOptions
+            {
+                OnnxModel = model,
+                ModelType = ModelType.PoseEstimation,
+                Cuda = false
+            });
+
+            
+            modelLoaded = true;
+        }
+
+        #endregion
 
         #region initWebcamStuff
 
@@ -157,8 +196,33 @@ namespace PTVision
                 image.EndInit();
                 myImage.Source = image;
 
+                if (processReady && modelLoaded)
+                {
+                    var imageBytes = ms.ToArray();
+                    SKBitmap sourceBitmap = new SKBitmap();
+                    sourceBitmap = SKBitmap.Decode(imageBytes);
+
+                    SKImage ss;
+                    ss = SKImage.FromBitmap(sourceBitmap);
+
+                    List<PoseEstimation> results = yolo.RunPoseEstimation(ss, 0.25, 0.45);
+                    yoloBody = results[0];
+
+
+                }
+
             });
-            if (processReady)
+
+            if(usingYOLO==true)
+            {
+                Task taskA = Task.Run(() => doAnalysis(""));
+                processReady = true;
+            }
+           
+
+
+
+            if (processReady && usingYOLO==false)
             {
                 Bitmap wcImage = (Bitmap)eventArgs.Frame.Clone();
                 Task taskA = Task.Run(() => sendInfo(wcImage));
@@ -230,7 +294,15 @@ namespace PTVision
             switch(currentExercise)
             {
                 case currentCase.RAISEARMS:
-                    doRaiseArmsAnalysis(body);
+                    if(usingYOLO)
+                    {
+                        doRaiseArmsAnalysis();
+                    }
+                    else
+                    {
+                        doRaiseArmsAnalysis(body);
+                    }
+                    
                     if(currentCount == 0)
                     {
                         currentCount = 3;
@@ -320,6 +392,46 @@ namespace PTVision
                 currentCount--;
             }
         }
+
+
+        void doRaiseArmsAnalysis()
+        {
+            analysisYOLO.analyseRaiseArms(yoloBody);
+            if (TimeTostretch == true)
+            {
+
+                Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
+                    InstructionLabel.FeedbackLabel.Content = "While inhaling, Raise arms and stretch yourself!";
+                    CounterLabel.Content = currentCount.ToString();
+
+                }));
+
+                if (Globals.f_RaisedArms == true)
+                {
+                    TimeTostretch = false;
+                    wordIdentified = false;
+                }
+
+            }
+            else
+            {
+                Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
+                    InstructionLabel.FeedbackLabel.Content = "Lower your arms and relax while saying \"AAAAAhhhhh\"";
+
+
+                }));
+                if (Globals.f_RaisedArms == false && wordIdentified == true)
+                {
+                    TimeTostretch = true;
+                    currentCount--;
+                    wordIdentified = false;
+                    Task taskA = Task.Run(() => showFeedback());
+
+                }
+            }
+        }
+
+
         void doRaiseArmsAnalysis(string body)
         {
             analysisMedia.analyseRaiseArms(body);

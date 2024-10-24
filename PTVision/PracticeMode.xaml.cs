@@ -22,6 +22,10 @@ using AForge.Video.DirectShow;
 using System.Drawing;
 using System.Net.Sockets;
 using static System.Net.Mime.MediaTypeNames;
+using YoloDotNet.Models;
+using YoloDotNet;
+using YoloDotNet.Enums;
+using SkiaSharp;
 
 namespace PTVision
 {
@@ -31,6 +35,11 @@ namespace PTVision
     public partial class PracticeMode : UserControl
     {
         public bool withScript = false;
+
+        Yolo yolo;
+        bool modelLoaded = false;
+        bool usingYOLO = true;
+        PoseEstimation yoloBody;
 
         int myImageHeight;
         int myImageWidth;
@@ -54,6 +63,7 @@ namespace PTVision
 
         VolumeAnalysis volumeAnalysis;
         PoseAnalysisMedia poseMedia;
+        PoseAnalysisYOLO analysisYOLO;
         RulesAnalyserFIFO rulesAnalyserFIFO;
         
         #endregion
@@ -110,6 +120,11 @@ namespace PTVision
             f_isAnalysing = true;
 
             initWebcam();
+            if (usingYOLO == true)
+            {
+                analysisYOLO = new PoseAnalysisYOLO();
+                configureYolo();
+            }
 
             rulesAnalyserFIFO.feedBackEvent += RulesAnalyserFIFO_feedBackEvent;
             rulesAnalyserFIFO.correctionEvent += RulesAnalyserFIFO_correctionEvent;
@@ -278,6 +293,27 @@ namespace PTVision
 
         #endregion
 
+        #region initYOLO
+
+        void configureYolo()
+        {
+            string executingDirectory = Directory.GetCurrentDirectory();
+            var model = executingDirectory + "\\Models\\yolov11s-pose.onnx";
+
+
+            yolo = new Yolo(new YoloOptions
+            {
+                OnnxModel = model,
+                ModelType = ModelType.PoseEstimation,
+                Cuda = false
+            });
+
+
+            modelLoaded = true;
+        }
+
+        #endregion
+
 
         #region initWebcamStuff
         private void initWebcam()
@@ -294,6 +330,8 @@ namespace PTVision
           
 
         }
+
+
 
         #endregion
 
@@ -315,8 +353,36 @@ namespace PTVision
                 image.EndInit();
                 myImage.Source = image;
 
+                if (processReady && modelLoaded)
+                {
+                    var imageBytes = ms.ToArray();
+                    SKBitmap sourceBitmap = new SKBitmap();
+                    sourceBitmap = SKBitmap.Decode(imageBytes);
+
+                    SKImage ss;
+                    ss = SKImage.FromBitmap(sourceBitmap);
+
+                    List<PoseEstimation> results = yolo.RunPoseEstimation(ss, 0.25, 0.45);
+                    if(results.Count > 0)
+                    {
+                        yoloBody = results[0];
+                    }
+                   
+
+
+                }
+
             });
-            if (processReady)
+
+            if (usingYOLO == true && yoloBody!=null)
+            {
+                Task taskA = Task.Run(() => doAnalysis("YOLO"));
+                processReady = true;
+            }
+
+
+
+            if (processReady&& usingYOLO==false)
             {
                 Bitmap wcImage = (Bitmap)eventArgs.Frame.Clone();
                 Task taskA = Task.Run(() => sendInfo(wcImage));
@@ -372,7 +438,17 @@ namespace PTVision
         {
             if (f_isAnalysing == true)
             {
-                poseMedia.analysePose(body); 
+
+                if(usingYOLO==true)
+                {
+                    analysisYOLO.analysePose(yoloBody);
+                }
+                else
+                {
+                    poseMedia.analysePose(body);
+                }
+
+                
                 volumeAnalysis.analyse();
                 if (Globals.readyToPresent == true)
                 {

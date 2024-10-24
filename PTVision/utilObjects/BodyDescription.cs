@@ -67,8 +67,9 @@ namespace PTVision.utilObjects
     public class YoloKeypoint
     {
         public int bodyPart = -1;
-        public float X;
-        public float Y;
+        public int X;
+        public int Y;
+        public double visibility = 0.0;
 
 
         public YoloKeypoint() { }
@@ -77,6 +78,7 @@ namespace PTVision.utilObjects
             bodyPart = -1;
             X = -1;
             Y = -1;
+            visibility = 0.0f;
 
         }
     }
