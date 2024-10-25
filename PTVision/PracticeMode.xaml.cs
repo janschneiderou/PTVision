@@ -255,6 +255,7 @@ namespace PTVision
             }
            
             readyForManualFeedback = true;
+            
         }
 
         void displayManualFeedback()
@@ -298,7 +299,7 @@ namespace PTVision
         void configureYolo()
         {
             string executingDirectory = Directory.GetCurrentDirectory();
-            var model = executingDirectory + "\\Models\\yolov11s-pose.onnx";
+            var model = executingDirectory + "\\Models\\yolo11n-pose.onnx";
 
 
             yolo = new Yolo(new YoloOptions
@@ -319,7 +320,7 @@ namespace PTVision
         private void initWebcam()
         {
 
-            processReady = true;
+            //processReady = true;
 
             var videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             videoSource = new VideoCaptureDevice(videoDevices[Globals.selectedCamera].MonikerString);
@@ -374,7 +375,7 @@ namespace PTVision
 
             });
 
-            if (usingYOLO == true && yoloBody!=null)
+            if (usingYOLO == true && yoloBody!=null && processReady==true)
             {
                 Task taskA = Task.Run(() => doAnalysis("YOLO"));
                 processReady = true;
@@ -699,9 +700,10 @@ namespace PTVision
             myCountDown.Visibility = Visibility.Collapsed;
             DateTime currentTime = DateTime.Now;
             
-            Globals.readyToPresent = true;
+            
             startLoggingStuff();
-
+            processReady = true;
+            Globals.readyToPresent = true;
 
         }
 
@@ -779,7 +781,7 @@ namespace PTVision
                     File.WriteAllText(path, myString);
                 }
                 recordingClass.stopRecording();
-                recordingClass.combineFiles();
+                //recordingClass.combineFiles();
             }
             
         }

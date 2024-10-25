@@ -129,7 +129,11 @@ namespace PTVision
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Globals.MediaPProcess.Kill();
+            if(Globals.MediaPProcess!=null)
+            {
+                Globals.MediaPProcess.Kill();
+            }
+            
             if(welcomePage.practiceMode!=null)
             {
                 welcomePage.practiceMode.doExitStuff();

@@ -393,6 +393,7 @@ namespace PTVision
 
                 process.Start();
 
+               
                 process.WaitForExit();
 
 
@@ -418,6 +419,33 @@ namespace PTVision
             }
 
 
+        }
+
+        private void Process_Video_Exited(object? sender, EventArgs e)
+        {
+            try
+            {
+                string FFmpegFilename;
+
+                FFmpegFilename = Directory.GetCurrentDirectory() + "\\HelpExes\\FFmpeg\\bin\\ffmpeg.exe";
+
+                process = new Process();
+                process.StartInfo.RedirectStandardOutput = false;
+                process.StartInfo.RedirectStandardError = false;
+                process.StartInfo.FileName = FFmpegFilename;
+                process.StartInfo.Arguments = "-i " + filenameMp4 + " -i " + filenameAudio + " -c:v copy -c:a aac -strict experimental " + filenameCombined + " -shortest";
+
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
+
+                process.Start();
+                process.WaitForExit();
+            }
+            catch
+            {
+
+            }
+            
         }
 
         #endregion

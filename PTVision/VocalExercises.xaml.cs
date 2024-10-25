@@ -143,7 +143,7 @@ namespace PTVision
         void configureYolo()
         {
             string executingDirectory = Directory.GetCurrentDirectory();
-            var model = executingDirectory + "\\Models\\yolov11s-pose.onnx";
+            var model = executingDirectory + "\\Models\\yolo11n-pose.onnx";
 
 
             yolo = new Yolo(new YoloOptions
