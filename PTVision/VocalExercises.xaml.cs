@@ -91,6 +91,7 @@ namespace PTVision
             InstructionLabel.FeedbackLabel.FontSize = 24;
             InstructionLabel.FeedbackLabel.Foreground = Brushes.Black;
             InstructionLabel.speechBubble.Width = 800;
+          //  InstructionLabel.setRaiseArms();
             // InstructionLabel.FeedbackLabel.HorizontalAlignment = HorizontalAlignment.Left;
             InstructionLabel.FeedbackLabel.Width = 700;
             InstructionLabel.FeedbackLabel.Background = Brushes.Transparent;
@@ -382,6 +383,7 @@ namespace PTVision
             
             Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
                 InstructionLabel.FeedbackLabel.Content = "Say " + Globals.words[exercise].Text + " " + exerciseHelper; ;
+                InstructionLabel.setStartSpeakingIcon();
                 CounterLabel.Content = currentCount.ToString();
 
             }));
@@ -403,6 +405,7 @@ namespace PTVision
                 Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
                     InstructionLabel.FeedbackLabel.Content = "While inhaling, Raise arms and stretch yourself!";
                     CounterLabel.Content = currentCount.ToString();
+                 //   InstructionLabel.setRaiseArms();
 
                 }));
 
@@ -417,6 +420,7 @@ namespace PTVision
             {
                 Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
                     InstructionLabel.FeedbackLabel.Content = "Lower your arms and relax while saying \"AAAAAhhhhh\"";
+                 //   InstructionLabel.setLowerArms();
 
 
                 }));
@@ -440,6 +444,7 @@ namespace PTVision
                 
                 Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
                     InstructionLabel.FeedbackLabel.Content = "While inhaling, Raise arms and stretch yourself!";
+                   // InstructionLabel.setRaiseArms();
                     CounterLabel.Content = currentCount.ToString();
 
                 }));
@@ -455,7 +460,8 @@ namespace PTVision
             {
                 Dispatcher.BeginInvoke(new System.Threading.ThreadStart(delegate {
                     InstructionLabel.FeedbackLabel.Content = "Lower your arms and relax while saying \"AAAAAhhhhh\"";
-                    
+                  //  InstructionLabel.setLowerArms();
+
 
                 }));
                 if(Globals.f_RaisedArms==false && wordIdentified == true )

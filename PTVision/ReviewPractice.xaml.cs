@@ -78,11 +78,18 @@ namespace PTVision
                 fs.Close();
                 feedbackSentences = new FeedbacksSentences();
 
-                foreach (IdentifiedSentence sentence in sessions.sessions[currentSession].sentences)
+
+                foreach (Word w in Globals.words)
                 {
-                    FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
+                    FeedbackForSentences f4s = new FeedbackForSentences("", "", "", w.Text);
                     feedbackSentences.feedbacks.Add(f4s);
                 }
+
+                //foreach (IdentifiedSentence sentence in sessions.sessions[currentSession].sentences)
+                //{
+                //    FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
+                //    feedbackSentences.feedbacks.Add(f4s);
+                //}
 
                 string myString = Newtonsoft.Json.JsonConvert.SerializeObject(feedbackSentences);
                 File.WriteAllText(path, myString);
@@ -92,14 +99,29 @@ namespace PTVision
             {
                 string jsonOne = File.ReadAllText(path);
                 feedbackSentences = JsonConvert.DeserializeObject<FeedbacksSentences>(jsonOne);
-                if (feedbackSentences.feedbacks.Count != sessions.sessions[currentSession].sentences.Count)
+
+                if(feedbackSentences==null)
                 {
-                    foreach (IdentifiedSentence sentence in sessions.sessions[currentSession].sentences)
-                    {
-                        FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
-                        feedbackSentences.feedbacks.Add(f4s);
-                    }
+                    feedbackSentences = new FeedbacksSentences();
                 }
+
+                
+
+                foreach (Word w in Globals.words)
+                {
+                    FeedbackForSentences f4s = new FeedbackForSentences("", "", "", w.Text);
+                    feedbackSentences.feedbacks.Add(f4s);
+                }
+
+
+                //if (feedbackSentences.feedbacks.Count != sessions.sessions[currentSession].sentences.Count)
+                //{
+                //    foreach (IdentifiedSentence sentence in sessions.sessions[currentSession].sentences)
+                //    {
+                //        FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
+                //        feedbackSentences.feedbacks.Add(f4s);
+                //    }
+                //}
 
 
             }
@@ -261,7 +283,7 @@ namespace PTVision
 
         private void PlaySentence_Click(object sender, RoutedEventArgs e)
         {
-            if (chbSentences.IsChecked == true)
+            if (chbSentences.IsChecked == true && selectedSentences.SelectedIndex!=-1)
             {
                 myVideo.Position = sessions.sessions[currentSession].sentences[selectedSentences.SelectedIndex].start;
                 myVideo.Play();

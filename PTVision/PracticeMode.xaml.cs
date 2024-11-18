@@ -206,6 +206,35 @@ namespace PTVision
                 {
                     FeedbackLabel.Visibility = Visibility.Visible;
                     FeedbackLabel.FeedbackLabel.Content = x.message;
+
+                    switch(x.message)
+                    {
+                        case "Reset Posture":
+                            FeedbackLabel.setPostureIcon();
+                            break;
+                        case "Stand Still":
+                            FeedbackLabel.setStillIcon();
+                            break;
+                        case "Use Gestures":
+                            FeedbackLabel.setGesturesIcon();
+                            break;
+                        case "Lower Volume":
+                            FeedbackLabel.setLowerVolumeIcon();
+                            break;
+                        case "Increase Volume":
+                            FeedbackLabel.setLouderVolumeIcon();
+                            break;
+                        case "Start Talking":
+                            FeedbackLabel.setStartSpeakingIcon();
+                            break;
+                        case "Stop Talking":
+                            FeedbackLabel.setStopSpeakingIcon();
+                            break;
+                        case "Stop HMMMMing":
+                            FeedbackLabel.setStopHmmIcon();
+                            break;
+                    }
+                    
                 }
 
             }));

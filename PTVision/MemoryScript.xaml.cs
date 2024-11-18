@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAnimatedGif;
 
 namespace PTVision
 {
@@ -55,6 +56,13 @@ namespace PTVision
             }
 
             lines = File.ReadAllLines(Globals.scriptPath);
+
+
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarMemory.gif");
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(parrotImg, image);
         }
 
         #region gameLogic

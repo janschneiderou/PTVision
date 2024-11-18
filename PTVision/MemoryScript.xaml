@@ -8,6 +8,7 @@
              d:DesignHeight="800" d:DesignWidth="1000">
     <Grid  Height="800" Width="1000">
         <Image Source="Images/container3.png" Stretch="Fill" Margin="0,0,0,0" />
+        <Image x:Name="parrotImg" Source="Images/parrot.png" Stretch="fill" Margin="750,200,46,400" />
         <StackPanel Margin="80,80,0,0" Orientation="Horizontal" >
             <Label Name="levelLabel" Content="Current Level" Foreground="#0E7B8C" Margin="5,0,0,0"/>
             <RadioButton Name="radioLevel1" GroupName="levelGroupName" Checked="RadioButton_Checked" IsChecked="True" Foreground="#0E7B8C" Margin="5">1</RadioButton>

@@ -171,11 +171,26 @@ namespace PTVision
                 fs.Close();
                 feedbackSentences = new FeedbacksSentences();
 
-                foreach (IdentifiedSentence sentence in Globals.practiceSession.sentences)
+                if(Globals.practiceSession == null)
                 {
-                    FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
-                    feedbackSentences.feedbacks.Add(f4s);
+                    foreach (Word word in Globals.words)
+                    {
+
+                        FeedbackForSentences f4s = new FeedbackForSentences("", "", "", word.Text);
+                        feedbackSentences.feedbacks.Add(f4s);
+                    }
                 }
+                else
+                {
+                    foreach (IdentifiedSentence sentence in Globals.practiceSession.sentences)
+                    {
+                        FeedbackForSentences f4s = new FeedbackForSentences("", "", "", sentence.sentence);
+                        feedbackSentences.feedbacks.Add(f4s);
+                    }
+                }
+
+
+                
 
                 string myString = Newtonsoft.Json.JsonConvert.SerializeObject(feedbackSentences);
                 File.WriteAllText(path, myString);

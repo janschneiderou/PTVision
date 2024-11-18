@@ -121,7 +121,7 @@ namespace PTVision
 
                 //AudioCaptureDevice source = new AudioCaptureDevice();
                 AudioSource.DesiredFrameSize = 4096;
-                AudioSource.SampleRate = 44100;
+                AudioSource.SampleRate = 22050;
                 //int sampleRate = 44100;
                 //int sampleRate = 22050;
 
@@ -352,17 +352,25 @@ namespace PTVision
 
         public void Dispose()
         {
-            stopThread.Set();
-            screenThread.Join();
+            try
+            {
+                stopThread.Set();
+                screenThread.Join();
 
 
-            // Close writer: the remaining data is written to a file and file is closed
-            writer.Close();
+                // Close writer: the remaining data is written to a file and file is closed
+                writer.Close();
 
-            stopThread.Close();
-            isRecording = false;
-            doAudioStop();
-            combineFiles();
+                stopThread.Close();
+                isRecording = false;
+                doAudioStop();
+                combineFiles();
+            }
+            catch (Exception x)
+            {
+
+            }
+            
         }
 
 
@@ -389,7 +397,7 @@ namespace PTVision
                 string arguments = "-i " + filenameOriginal + " -strict experimental " + filenameMp4;
                 process.StartInfo.Arguments = arguments;
                 process.StartInfo.UseShellExecute = false;
-                process.StartInfo.CreateNoWindow = false;
+                process.StartInfo.CreateNoWindow = true;
 
                 process.Start();
 
@@ -436,7 +444,7 @@ namespace PTVision
                 process.StartInfo.Arguments = "-i " + filenameMp4 + " -i " + filenameAudio + " -c:v copy -c:a aac -strict experimental " + filenameCombined + " -shortest";
 
                 process.StartInfo.UseShellExecute = false;
-                process.StartInfo.CreateNoWindow = true;
+                process.StartInfo.CreateNoWindow = false;
 
                 process.Start();
                 process.WaitForExit();
