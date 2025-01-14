@@ -30,6 +30,7 @@ namespace PTVision.Grids
         {
             InitializeComponent();
             ComposeButton_MouseLeave(null, null);
+            promoImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\Promo.png"));
         }
 
         #region selections

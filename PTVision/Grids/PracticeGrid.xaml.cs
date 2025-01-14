@@ -26,6 +26,9 @@ namespace PTVision.Grids
         public PracticeGrid()
         {
             InitializeComponent();
+
+            promoImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\Promo.png"));
+
         }
 
         #region button animations

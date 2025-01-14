@@ -26,6 +26,8 @@ namespace PTVision.Grids
         public ShineGrid()
         {
             InitializeComponent();
+
+            promoImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\Promo.png"));
         }
 
         #region MouseAnimations

@@ -29,6 +29,7 @@ namespace PTVision
             InitializeComponent();
             string path = System.IO.Path.Combine(Globals.presentationPath + "\\Slides.txt");
             setupSize();
+            SpeechBubbleImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\SpeechBubble2.png"));
             if (!File.Exists(path))
             {
                 FileStream fs = File.Create(path);
@@ -112,6 +113,11 @@ namespace PTVision
             File.WriteAllText(path, textboxPath.Text);
             Globals.SlidesPath = textboxPath.Text;
             exitEvent(this, "");
+        }
+
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
+        {
+          //  SpeechBubbleImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\SpeechBubble2.png"));
         }
     }
 }

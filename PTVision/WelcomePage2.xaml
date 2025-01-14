@@ -7,8 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
     <Grid Name="myGrid" Background="White">
+        
         <Line Stroke="Gray" X1="200" X2="200" Y1="0" Y2="800" />
-        <Image Source="Images\Title.png" VerticalAlignment="Top" HorizontalAlignment="Left" Height="35" Margin="5,10,0,0" />
+        <Image x:Name="parrotImg" Source="Images\EasterEgg.png" Height="70"  VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="0,0,0,0" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave"/>
+        <Image Source="Images\Title.png"  VerticalAlignment="Top" HorizontalAlignment="Left" Height="35" Margin="5,69,0,0" />
 
 
         <Button Name="ComposeButton" HorizontalAlignment="Left"  MouseEnter="ComposeButton_MouseEnter" MouseLeave="ComposeButton_MouseLeave" Click="ComposeButton_Click" BorderThickness="0"  Margin="0,90,0,0" VerticalAlignment="Top" FontSize="20" Background="Transparent" Height="70" Width="200">
@@ -184,6 +186,8 @@
         </Button>
         <local:Tutor x:Name="Tutor" HorizontalAlignment="Left" Margin="506,395,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
         <Line Stroke="Gray" X1="200" X2="200" Y1="0" Y2="800" />
-        
+
+        <Image x:Name="promoImg" Source="Images\Promo.png" HorizontalAlignment="Right" Width="200" VerticalAlignment="Top"  Margin="0,0,0,0"  />
+
     </Grid>
 </UserControl>

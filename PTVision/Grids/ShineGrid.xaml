@@ -54,5 +54,7 @@
             <Image x:Name="imgTipsButton" Source="../Images/btn_Tips.png" />
         </Button>
 
+        <Image x:Name="promoImg" Source="../Images/Promo.png" HorizontalAlignment="Right" Width="200" VerticalAlignment="Top"  Margin="0,0,0,0"  />
+
     </Grid>
 </UserControl>

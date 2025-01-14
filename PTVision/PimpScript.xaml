@@ -9,22 +9,26 @@
     <Grid x:Name="mainGrid" Height="800" Width="1000">
         <Image Name="imgFrame" Source="Images/container3.png" Stretch="Fill" Margin="0,0,0,0" />
 
+        <Image x:Name="SpeechBubbleImg" HorizontalAlignment="Left" Height="64"  Stretch="Fill" Source="Images/SpeechBubble.png" VerticalAlignment="Top" Width="504" Margin="175,60,0,0" />
+        <Image x:Name="parrotImg" Source="Images/parrot.png" HorizontalAlignment="Left" VerticalAlignment="Top" Height="100" Margin="100,50,0,0" />
+       
+        <Label Name="QuestionsLabel" Foreground="#0E7B8C" Content="How do you want to pimp the sentence? \n what do you want to communicate with it?" HorizontalAlignment="Left" Height="49" Margin="202,75,0,0" VerticalAlignment="Top" Width="477"/>
 
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="152" Margin="67,83,0,0" VerticalAlignment="Top" Width="832"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="154" Margin="67,129,0,0" VerticalAlignment="Top" Width="832"/>
 
-        <Label  Foreground="#0E7B8C" Content="Sentence you want to work with" HorizontalAlignment="Left" Height="29" Margin="142,90,0,0" VerticalAlignment="Top" Width="278"/>
-        <Label  Foreground="#0E7B8C" Content="Feedback for the sentence" HorizontalAlignment="Left" Height="29" Margin="586,90,0,0" VerticalAlignment="Top" Width="278"/>
+        <Label  Foreground="#0E7B8C" Content="Sentence you want to work with" HorizontalAlignment="Left" Height="29" Margin="142,140,0,0" VerticalAlignment="Top" Width="278"/>
+        <Label  Foreground="#0E7B8C" Content="Feedback for the sentence" HorizontalAlignment="Left" Height="29" Margin="586,174,0,0" VerticalAlignment="Top" Width="278"/>
 
-        <Label Name="PrevSentenceLabel" Foreground="Black" Content="" HorizontalAlignment="Left" Height="29" Margin="142,114,0,0" VerticalAlignment="Top" Width="278"/>
-        <Label Name="NextSentenceLabel" Foreground="Black" Content="" HorizontalAlignment="Left" Height="29" Margin="140,184,0,0" VerticalAlignment="Top" Width="282"/>
-        <TextBox Name="CurrentSentence" HorizontalAlignment="Left" Margin="141,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
-        <Label Name="QuestionsLabel" Foreground="#0E7B8C" Content="How do you want to pimp the sentence? \n what do you want to communicate with it?" HorizontalAlignment="Left" Height="49" Margin="103,234,0,0" VerticalAlignment="Top" Width="477"/>
+        <Label Name="PrevSentenceLabel" Foreground="Black" Content="" HorizontalAlignment="Left" Height="29" Margin="140,174,0,0" VerticalAlignment="Top" Width="278"/>
+        <Label Name="NextSentenceLabel" Foreground="Black" Content="" HorizontalAlignment="Left" Height="29" Margin="140,244,0,0" VerticalAlignment="Top" Width="282"/>
+        <TextBox Name="CurrentSentence" HorizontalAlignment="Left" Margin="141,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
+
         <ComboBox Name="ComboImprovement" SelectionChanged="Improvement_SelectionChanged" HorizontalAlignment="Left" Margin="107,304,0,0" VerticalAlignment="Top" Width="194"/>
         <Label Foreground="#0E7B8C" Content="Technique:" HorizontalAlignment="Left" Height="29" Margin="103,331,0,0" VerticalAlignment="Top" Width="198"/>
         <ComboBox Name="ComboTechnique" SelectionChanged="Technique_SelectionChanged" HorizontalAlignment="Left" Margin="107,366,0,0" VerticalAlignment="Top" Width="194"/>
         <Label Foreground="#0E7B8C" Content="Description:" HorizontalAlignment="Left" Height="30" Margin="103,0,0,0" VerticalAlignment="Center" Width="198"/>
         <TextBox Name="descriptionTxt" HorizontalAlignment="Left" Height="200" Margin="103,427,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="282"/>
-        <TextBox Name="FeedbackTxt" HorizontalAlignment="Left" Margin="569,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
+        <TextBox Name="FeedbackTxt" HorizontalAlignment="Left" Margin="569,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
 
         <MediaElement Name="myVideo" LoadedBehavior="Manual" UnloadedBehavior="Manual" HorizontalAlignment="Right" Height="278" Margin="0,333,90,0" VerticalAlignment="Top" Width="331"/>
         <Button Name="Play" MouseEnter="Play_MouseEnter" MouseLeave="Play_MouseLeave" BorderThickness="0" Background="Transparent" FontSize="15" HorizontalAlignment="Left" Margin="586,0,0,100" VerticalAlignment="Bottom" Click="Play_Click" Height="50" Width="57" >
@@ -72,7 +76,7 @@
             <Image Name="btnStop" Source="Images/btn_Stop.png" />
         </Button>
 
-        <Button Name="buttonPrevious"  MouseEnter="buttonPrevious_MouseEnter" MouseLeave="buttonPrevious_MouseLeave" HorizontalAlignment="Left" Margin="80,140,0,0" VerticalAlignment="Top" Height="36" Click="buttonPrevious_Click">
+        <Button Name="buttonPrevious"  MouseEnter="buttonPrevious_MouseEnter" MouseLeave="buttonPrevious_MouseLeave" HorizontalAlignment="Left" Margin="80,200,0,0" VerticalAlignment="Top" Height="36" Click="buttonPrevious_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -94,7 +98,7 @@
             </Button.Style>
             <Image Name="prevButtonImg" Source="Images/btn_back.png" />
         </Button>
-        <Button Name="buttonNext"  HorizontalAlignment="Left" Margin="435,140,0,0" VerticalAlignment="Top" Height="35" MouseEnter="buttonNext_MouseEnter" MouseLeave="buttonNext_MouseLeave" Click="buttonNext_Click">
+        <Button Name="buttonNext"  HorizontalAlignment="Left" Margin="435,200,0,0" VerticalAlignment="Top" Height="35" MouseEnter="buttonNext_MouseEnter" MouseLeave="buttonNext_MouseLeave" Click="buttonNext_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>

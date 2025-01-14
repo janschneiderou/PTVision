@@ -8,9 +8,11 @@
               d:DesignHeight="800" d:DesignWidth="1000" Background="Transparent">
     <Grid x:Name="mainGrid" Height="800" Width="1000">
         <Image Name="imgFrame" Source="Images/container3.png" Stretch="Fill" />
-        <TextBox Name="scriptText" Height="460" HorizontalAlignment="Left" Margin="85,130,0,0" Width="441" TextWrapping="Wrap" Text="" VerticalAlignment="Top"
+        <Image x:Name="parrot" Source="Images/parrot.png" Height="100" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="102,73,0,0"/>
+        <Image x:Name="SpeechBubbleImg" HorizontalAlignment="Left" Height="90"  Stretch="Fill" Source="Images/SpeechBubble.png" VerticalAlignment="Top" Width="384" Margin="175,60,0,0" />
+        <TextBox Name="scriptText" Height="361" HorizontalAlignment="Left" Margin="85,229,0,0" Width="441" TextWrapping="Wrap" Text="" VerticalAlignment="Top"
                    ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" IsEnabled="True" AcceptsReturn="True"/>
-        <Label Content="Write the Script for your presentation" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Foreground="#0E7B8C" FontWeight="Bold"/>
+        <Label Content="Write the Script for your presentation" HorizontalAlignment="Left" Margin="214,89,0,0" VerticalAlignment="Top" FontSize="17" Foreground="#0E7B8C" FontWeight="Bold"/>
 
         <Button Name="Button_Close" MouseEnter="Button_Close_MouseEnter" MouseLeave="Button_Close_MouseLeave" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="70,0,0,105" VerticalAlignment="Bottom" Click="Button_Close_Click" Height="50" Width="55">
             <Button.Style>

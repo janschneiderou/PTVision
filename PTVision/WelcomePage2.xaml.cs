@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using AForge.Video.DirectShow;
 using PTVision.Grids;
 using PTVision.utilObjects;
+using WpfAnimatedGif;
 
 namespace PTVision
 {
@@ -84,6 +85,11 @@ namespace PTVision
 
 
             learningDesign = new LearningDesign();
+            promoImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\Promo.png"));
+
+            string uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\EasterEgg.png";
+            parrotImg.Source = new BitmapImage(new Uri(uri));
+
         }
 
 
@@ -893,6 +899,72 @@ namespace PTVision
             //{
             //    learningDesign.Tasks.Remove(learningDesign.Tasks[0]);
             //}
+        }
+
+        #endregion
+
+        #region parrotAnimations
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+            Random rnd = new Random();
+            int selected = rnd.Next(1, 10);
+
+            string uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\EasterEgg.png";
+
+            switch(selected)
+            {
+                case 0:
+                    break;
+                case 1:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarDance.gif";
+                    break;
+                case 2:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarGestures.gif";
+                    break;
+                case 3:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarLowerArms.gif";
+                    break;
+                case 4:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarMemory.gif";
+                    break;
+                case 5:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarPosture.gif";
+                    break;
+                case 6:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarPauses.gif";
+                    break;
+                case 7:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarStartSpeaking.gif";
+                    break;
+                case 8:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarRaiseArms.gif";
+                    break;
+                case 9:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\avatarSoftSpeaking.gif";
+                    break;
+                case 10:
+                    uri = System.IO.Directory.GetCurrentDirectory() + "\\Images\\AvatarSpeakLouder.gif";
+                    break;
+
+            }
+
+
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(uri);
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(parrotImg, image);
+        }
+
+        private void Image_MouseLeave(object sender, MouseEventArgs e)
+        {
+            
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\EasterEgg.png");
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(parrotImg, image);
         }
 
         #endregion

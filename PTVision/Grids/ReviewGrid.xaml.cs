@@ -25,6 +25,8 @@ namespace PTVision.Grids
         public ReviewGrid()
         {
             InitializeComponent();
+
+            promoImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\Promo.png"));
         }
 
         #region button animations

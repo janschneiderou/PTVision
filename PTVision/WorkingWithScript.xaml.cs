@@ -40,6 +40,7 @@ namespace PTVision
             setupSize();
             getSlides();
             setSlideAndText();
+            SpeechBubbleImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\SpeechBubble2.png"));
             if (Globals.SlideConfigs.Count == 0)
             {
                 writeText();

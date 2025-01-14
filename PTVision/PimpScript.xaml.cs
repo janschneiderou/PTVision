@@ -51,6 +51,7 @@ namespace PTVision
             }
             getImprovemens();
             loadFeedbacks();
+            SpeechBubbleImg.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\Images\\SpeechBubble2.png"));
             QuestionsLabel.Content = "What do you want to communicate with your sentence? \n How would you make the delivery more powerful?";
         }
 
